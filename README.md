@@ -23,7 +23,7 @@
 - [React Navigation](https://reactnavigation.org)
 - [Museo Tilasto](https://www.museotilasto.fi)
 
-<p align="right">(<a href="#top">back to top</a>)</p>
+<p align="right"><a href="#top">back to top</a></p>
 
 <!-- Päästään Alkuun -->
 
@@ -69,10 +69,10 @@ Fronttipuolen asennusohjeet
 
 5. Seuraa [Backend repon](https://github.com/Museosovellus/MuseoBackend) ohjeita myös.
 
-<p align="right">(<a href="#top">back to top</a>)</p>
+<p align="right"><a href="#top">back to top</a></p>
 
 ## Käyttö
 
 ### Museo näkymä
 
-1. Lisätään tänne kun tiedetään enmmän siitä mitä sovellus tulee tekemään.
+1. Lisätään tänne kun tiedetään enemmän siitä mitä sovellus tulee tekemään.
