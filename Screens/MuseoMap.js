@@ -1,123 +1,69 @@
-import React from 'react';
-import { StyleSheet, Text, View, Button, TextInput, Alert } from 'react-native';
-import MapView, {Marker, Callout} from 'react-native-maps';
-import * as Location from'expo-location';
-import { useState, useEffect  } from 'react';
+import { useEffect, useState } from 'react';
+import { StyleSheet, Text, View, Button, FlatList } from 'react-native';
+import MapView, { Marker } from 'react-native-maps';
 
-//navigation, route
-export default function MuseoMap(navigation,route) {
-    //let language = route.params.language;
-    //let greeting = language === "finnish" ? "Kartta Ruutu" : "Map Screen";
 
-    const [location, setLocation] = useState(null);
-  const [keyword, setKeyword] = useState('');
+export default function MuseoMap() {
   const [data, setData] = useState([]);
-  const [pin, setPin] = useState({
-    latitude: 0.0000,
-    longitude: 0.0000,
-  })
 
   useEffect(() => {
-    (async () => {
-      let { status } = await Location.requestForegroundPermissionsAsync();
-      if (status !== 'granted') {
-        setErrorMsg('Permission to access location was denied');
-        return;
+    fetch('https://museum-rest-api.herokuapp.com/museums')
+    .then(response => response.json())
+    .then(data => setData(data))
+  }, [])
+
+  let markers = [];
+  
+  for (var i = 0; i < data.length; i++) {
+    var object = data[i];
+    let marker = new Object();
+    for (var property in object) {
+      if (property === 'name') {
+        Object.assign(marker, {title: object[property]})
+      } else if (property === 'latitude') {
+        Object.assign(marker, {latitude: object[property]})
+      } else if (property === 'longitude') {
+        Object.assign(marker, {longitude: object[property]})
+      } else if (Object.keys(marker).length === 2) {
+        break;
       }
-
-      let location = await Location.getCurrentPositionAsync({});
-      setLocation(location);
-      console.log(location);
-
-      setPin({
-        latitude: location.coords.latitude,
-        longitude: location.coords.longitude,
-      });
-    })();
-  }, []);
-
-  this.state = {
-    region: {
-    latitude: 60.17116,
-    longitude: 24.93265,
-    latitudeDelta: 0.0922,
-    longitudeDelta: 0.0421,
-    },
-    markers: [
-      {
-        coordinate: {
-          latitude: 60.16805,
-          longitude: 24.95156
-        },
-        title: "Helsingin kaupunginmuseo",
-        id: 1
-      },
-      {
-        coordinate: {
-          latitude: 60.16949,
-          longitude: 24.95007
-        },
-        title: "Helsingin yliopistomuseo",
-        id: 2
-      },
-      {
-        coordinate: {
-          latitude: 60.4496,
-          longitude: 22.2738
-        },
-        title: "Aboa Vetus museo",
-        id: 3
-      },
-
-    ]
+    }
+    markers.push(marker)
   }
 
+  console.log(markers)
 
-  const fetchLocation = () => {
-    fetch('http://www.mapquestapi.com/geocoding/v1/address?key=2YWefQnbCvnpczTbs6GqAFCSjG2kJIZH&location=' + keyword) // lisää oma key KEY tilalle
-    .then(response => response.json())
-    .then(data => setData(data.locations))
-    .catch(error => {
-      Alert.alert('!!! ERROR Did you forget to change mapquestapi KEY? !!!');
-    });
-    }
-
-    return (
-        <View style={styles.container}>
-        <MapView 
-      style={{width:'100%', height:'75%'}}
-      region={this.state.region}
-      showsUserLocation={true}
+  return (
+    <View style={styles.container}>
+      <MapView
+        style={styles.map}
+        initialRegion={{
+          latitude: 60.17116,
+          longitude: 24.93265,
+          latitudeDelta: 10,
+          longitudeDelta: 10,
+        }}
       >
-        {this.state.markers.map((marker: any) => (
-                <Marker
-                    key={marker.id}
-                    coordinate={marker.coordinate}
-                    title={marker.title}
-                    description={marker.description}
-                />
-            ))}
-        
+        {markers.map((marker, index) => (
+          <Marker
+            key={index}
+            title={marker.title}
+            coordinate={{ latitude: marker.latitude , longitude: marker.longitude }}
+          />
+        ))}
       </MapView>
-      <TextInput
-      style={{fontSize: 18, width: 200}}
-      placeholder='Kirjoita Sijainti'
-      onChangeText={text => setKeyword(text)}
-      />
-      <Button 
-      title="SEARCH"
-      onPress={fetchLocation}
-      
-      />
-        </View>
-    );
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      backgroundColor: '#fff',
-      alignItems: 'center',
-      justifyContent: 'center',
-    },
-  });
+  container: {
+    ...StyleSheet.absoluteFillObject,
+    flex: 1,
+    justifyContent: "flex-end",
+    alignItems: "center",
+  },
+  map: {
+    ...StyleSheet.absoluteFillObject,
+  },
+});
