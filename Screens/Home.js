@@ -44,7 +44,6 @@ const styles = StyleSheet.create({
     header: {
       fontSize: 30,
       color: '#05968f',
-      fontVariant: 'uppercase',
       fontWeight: 'bold',
     },
   });
