@@ -47,13 +47,14 @@ export default function MuseoList() {
         <TextInput
         onChangeText={(text) => searchFunction(text)}
         value={search}
-        style={{borderColor: 'gray', borderWidth: 1}}
+        style={styles.searchbar}
+        placeholder="museohaku"
         />
         <FlatList
           data={filteredData}
           renderItem={({ item }) => 
           <View>
-            <Text>{item.name}</Text>
+            <Text style={styles.item}>{item.name}</Text>
           </View>
           }
         />
@@ -68,4 +69,19 @@ const styles = StyleSheet.create({
       alignItems: 'center',
       justifyContent: 'center',
     },
+    searchbar: {
+      borderColor: '#c4c4c4', 
+      borderWidth: 1, 
+      margin: 20,
+      padding: 10,
+      backgroundColor: '#fafafa'
+    },
+    item: {
+      margin: 10,
+      marginLeft: 30,
+      marginRight: 20,
+      fontSize: 20,
+      fontWeight: 'bold',
+      color: '#05968f',
+    }
   });
