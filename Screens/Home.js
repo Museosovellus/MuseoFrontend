@@ -10,11 +10,8 @@ export default function Home({ navigation }) {
 
     return (
       <View style={[styles.container, {backgroundColor: theme.background}]}>
-        <Switch value={mode}
-        onValueChange={ (value) => {
-          setMode(value);
-          EventRegister.emit("changeTheme", value);
-          }} />
+         <Text style={[styles.header, {color: theme.color}]}>Museoäppi</Text>
+
         <Button
         title="Navigate to MuseoList"
         onPress={() => navigation.navigate("MuseoList")}>
@@ -24,10 +21,16 @@ export default function Home({ navigation }) {
         title="Navigate to MuseoMap"
         onPress={() => navigation.navigate("MuseoMap")}>
         </Button>
-        
-        <Text style={[styles.text, {color: theme.color}]}>Home Screen</Text>
+      
         <StatusBar />
-        </View>
+
+        <Switch 
+        value={mode}
+        onValueChange={ (value) => {
+          setMode(value);
+          EventRegister.emit("changeTheme", value);
+          }} />
+      </View>
     );
 }
 
@@ -37,5 +40,11 @@ const styles = StyleSheet.create({
       backgroundColor: '#141414',
       alignItems: 'center',
       justifyContent: 'center',
-    }
+    },
+    header: {
+      fontSize: 30,
+      color: '#05968f',
+      fontVariant: 'uppercase',
+      fontWeight: 'bold',
+    },
   });
