@@ -43,7 +43,7 @@ export default function MuseoList() {
   }
 
   return (
-      <View>
+      <View style={{marginBottom: 20}}>
         <TextInput
         onChangeText={(text) => searchFunction(text)}
         value={search}
@@ -57,7 +57,7 @@ export default function MuseoList() {
             <Text style={styles.item}>{item.name}</Text>
           </View>
           }
-        />
+          style={{marginBottom: 100}}/>
       </View>
   );
 }
@@ -68,6 +68,7 @@ const styles = StyleSheet.create({
       backgroundColor: '#fff',
       alignItems: 'center',
       justifyContent: 'center',
+      marginBottom: 20,
     },
     searchbar: {
       borderColor: '#c4c4c4', 
