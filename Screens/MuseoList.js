@@ -13,11 +13,11 @@ export default function MuseoList() {
 
   useEffect(() => {
     fetch('https://museum-rest-api.herokuapp.com/museums')
-    .then(response => response.json())
-    .then((data) => {
-      setData(data);
-      setFilteredData(data);
-    });
+      .then(response => response.json())
+      .then((data) => {
+        setData(data);
+        setFilteredData(data);
+      });
   }, [])
 
   const searchFunction = (text) => {
@@ -43,46 +43,46 @@ export default function MuseoList() {
   }
 
   return (
-      <View style={[styles.container, {backgroundColor: theme.background}]}>
-        <TextInput
+    <View style={[styles.container, { backgroundColor: theme.background }]}>
+      <TextInput
         onChangeText={(text) => searchFunction(text)}
         value={search}
         style={styles.searchbar}
         placeholder="museohaku"
-        />
-        <FlatList
-          data={filteredData}
-          renderItem={({ item }) => 
+      />
+      <FlatList
+        data={filteredData}
+        renderItem={({ item }) =>
           <View>
             <Text style={styles.item}>{item.name}</Text>
           </View>
-          }
-          style={{marginBottom: 100}}/>
-      </View>
+        }
+        style={{ marginBottom: 100 }} />
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      backgroundColor: '#fff',
-      alignItems: 'left',
-      justifyContent: 'center',
-    },
-    searchbar: {
-      borderColor: '#c4c4c4', 
-      borderWidth: 1, 
-      margin: 20,
-      padding: 10,
-      backgroundColor: '#fafafa',
-      width: '90%'
-    },
-    item: {
-      margin: 10,
-      marginLeft: 30,
-      marginRight: 20,
-      fontSize: 20,
-      fontWeight: 'bold',
-      color: '#05968f',
-    }
-  });
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    alignItems: 'left',
+    justifyContent: 'center',
+  },
+  searchbar: {
+    borderColor: '#c4c4c4',
+    borderWidth: 1,
+    margin: 20,
+    padding: 10,
+    backgroundColor: '#fafafa',
+    width: '90%'
+  },
+  item: {
+    margin: 10,
+    marginLeft: 30,
+    marginRight: 20,
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: '#05968f',
+  }
+});

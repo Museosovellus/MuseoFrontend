@@ -7,22 +7,22 @@ export default function MuseoMap() {
 
   useEffect(() => {
     fetch('https://museum-rest-api.herokuapp.com/museums')
-    .then(response => response.json())
-    .then(data => setData(data))
+      .then(response => response.json())
+      .then(data => setData(data))
   }, []);
 
   let markers = [];
-  
+
   for (var i = 0; i < data.length; i++) {
     var object = data[i];
     let marker = new Object();
     for (var property in object) {
       if (property === 'name') {
-        Object.assign(marker, {title: object[property]})
+        Object.assign(marker, { title: object[property] })
       } else if (property === 'latitude') {
-        Object.assign(marker, {latitude: object[property]})
+        Object.assign(marker, { latitude: object[property] })
       } else if (property === 'longitude') {
-        Object.assign(marker, {longitude: object[property]})
+        Object.assign(marker, { longitude: object[property] })
       } else if (Object.keys(marker).length === 2) {
         break;
       }
@@ -47,7 +47,7 @@ export default function MuseoMap() {
           <Marker
             key={index}
             title={marker.title}
-            coordinate={{ latitude: marker.latitude , longitude: marker.longitude }}
+            coordinate={{ latitude: marker.latitude, longitude: marker.longitude }}
           />
         ))}
       </MapView>
