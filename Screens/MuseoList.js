@@ -1,11 +1,11 @@
 import React from 'react';
 import { StyleSheet, Text, View, Button, FlatList, TextInput } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
-import { useState, useEffect } from 'react';
-
+import { useState, useEffect, useContext } from 'react';
+import themeContext from '../config/themeContext';
 
 export default function MuseoList() {
-  
+  const theme = useContext(themeContext);
   const [data, setData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
   const [search, setSearch] = useState('');
@@ -43,7 +43,7 @@ export default function MuseoList() {
   }
 
   return (
-      <View>
+      <View style={[styles.container, {backgroundColor: theme.background}]}>
         <TextInput
         onChangeText={(text) => searchFunction(text)}
         value={search}
