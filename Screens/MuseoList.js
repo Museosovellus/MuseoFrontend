@@ -66,7 +66,7 @@ const styles = StyleSheet.create({
     container: {
       flex: 1,
       backgroundColor: '#fff',
-      alignItems: 'center',
+      alignItems: 'left',
       justifyContent: 'center',
       marginBottom: 20,
     },
@@ -75,7 +75,8 @@ const styles = StyleSheet.create({
       borderWidth: 1, 
       margin: 20,
       padding: 10,
-      backgroundColor: '#fafafa'
+      backgroundColor: '#fafafa',
+      width: '90%'
     },
     item: {
       margin: 10,
