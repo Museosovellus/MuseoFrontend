@@ -44,7 +44,6 @@ export default function MuseoList() {
 
   return (
       <View style={[styles.container, {backgroundColor: theme.background}]}>
-      <View style={{marginBottom: 20}}>
         <TextInput
         onChangeText={(text) => searchFunction(text)}
         value={search}
