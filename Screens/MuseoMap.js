@@ -11,25 +11,6 @@ export default function MuseoMap() {
       .then(data => setData(data))
   }, []);
 
-  let markers = [];
-
-  for (var i = 0; i < data.length; i++) {
-    var object = data[i];
-    let marker = new Object();
-    for (var property in object) {
-      if (property === 'name') {
-        Object.assign(marker, { title: object[property] })
-      } else if (property === 'latitude') {
-        Object.assign(marker, { latitude: object[property] })
-      } else if (property === 'longitude') {
-        Object.assign(marker, { longitude: object[property] })
-      } else if (Object.keys(marker).length === 2) {
-        break;
-      }
-    }
-    markers.push(marker)
-  }
-
   return (
     <View style={styles.container}>
       <MapView
@@ -43,10 +24,10 @@ export default function MuseoMap() {
         showsUserLocation={true}
         showsMyLocationButton={true}
       >
-        {markers.map((marker, index) => (
+        {data.map((marker, index) => (
           <Marker
             key={index}
-            title={marker.title}
+            title={marker.name}
             coordinate={{ latitude: marker.latitude, longitude: marker.longitude }}
           />
         ))}
