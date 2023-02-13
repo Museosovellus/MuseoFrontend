@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
-import { StyleSheet, Text, View, Button, FlatList } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import MapView, { Marker } from 'react-native-maps';
-
 
 export default function MuseoMap() {
   const [data, setData] = useState([]);
@@ -10,7 +9,7 @@ export default function MuseoMap() {
     fetch('https://museum-rest-api.herokuapp.com/museums')
     .then(response => response.json())
     .then(data => setData(data))
-  }, [])
+  }, []);
 
   let markers = [];
   
@@ -31,18 +30,18 @@ export default function MuseoMap() {
     markers.push(marker)
   }
 
-  console.log(markers)
-
   return (
     <View style={styles.container}>
       <MapView
         style={styles.map}
         initialRegion={{
-          latitude: 60.17116,
-          longitude: 24.93265,
-          latitudeDelta: 10,
-          longitudeDelta: 10,
+          latitude: 60.2017,
+          longitude: 24.9341,
+          latitudeDelta: 1,
+          longitudeDelta: 1
         }}
+        showsUserLocation={true}
+        showsMyLocationButton={true}
       >
         {markers.map((marker, index) => (
           <Marker
@@ -58,12 +57,10 @@ export default function MuseoMap() {
 
 const styles = StyleSheet.create({
   container: {
-    ...StyleSheet.absoluteFillObject,
-    flex: 1,
-    justifyContent: "flex-end",
-    alignItems: "center",
+    flex: 1
   },
   map: {
     ...StyleSheet.absoluteFillObject,
+    width: '100%',
   },
 });
