@@ -1,78 +1,40 @@
-<div id="top"></div>
-
 <!-- PROJECT LOGO -->
-<br />
+<br>
 <div align="center">
-  
-<h1 align="center">MuseoFrontend</h1>
-
-<h3 align="center">
-    Projekti luotu Ohjelmistoprojekti II kurssilla <br />
-<br />
+  <h1 align="center">Museosovellus</h1>
+  <h3 align="center">Projekti luotu Ohjelmistoprojekti II kurssilla</h3><br>
 </div>
 
-## Tekijät
-
-  <p>MuseoFrontend</p>
-  
-### Teknologiat ja muut hyödylliset resurssit
+### Käytetyt teknologiat ja muut resurssit
 
 - [React Native](https://reactnative.dev)
 - [Expo](https://expo.dev)
-- [React Navigation Stack](https://reactnavigation.org/docs/stack-navigator/)
-- [React Navigation](https://reactnavigation.org)
-- [Museo Tilasto](https://www.museotilasto.fi)
-
-<p align="right"><a href="#top">back to top</a></p>
-
-<!-- Päästään Alkuun -->
-
-## Aloitus
-
-Fronttipuolen asennusohjeet
+- [Museotilasto](https://www.museotilasto.fi)
 
 ### Asennus
 
 1. Kloonaa repository
-  
   ```sh
-   git clone https://github.com/Museosovellus/MuseoFrontend.git
-   ```
+  git clone https://github.com/Museosovellus/MuseoFrontend.git
+  ```
 
 2. Asenna tarvittavat paketit
+  ```sh
+  npm install
+  ```
 
-```sh
-   npm install
-```
-
-3. Lisää Visual Studio Code gitignoreen (valinnainen)
-
-```sh
-   .vscode/*
-!.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json
-!.vscode/extensions.json
-!.vscode/*.code-snippets
-
-# Local History for Visual Studio Code
-.history/
-
-# Built Visual Studio Code Extensions
-*.vsix
-```
-
-4. Sovelluksen käynnistys
-```sh
+3. Sovelluksen käynnistys
+  ```sh
   npx expo start
-```
+  ```
 
-5. Seuraa [Backend repon](https://github.com/Museosovellus/MuseoBackend) ohjeita myös.
+### Käyttöliittymä
 
-<p align="right"><a href="#top">back to top</a></p>
-
-## Käyttö
-
-### Museo näkymä
-
-1. Lisätään tänne kun tiedetään enemmän siitä mitä sovellus tulee tekemään.
+![Kotisivu](/assets/img/IMG_3548.PNG "Kotisivu")
+*Sovelluksen kotisivu*
+![Museolista](/assets/img/IMG_3549.PNG "Museolista")
+*Listaus museoista*
+![Museolistan hakutoiminto](/assets/img/IMG_3550.PNG "Museolistan hakutoiminto")
+*Listaus museoista, jossa haettu nimen perusteella*
+![Museokartta](/assets/img/IMG_3551.PNG "Museokartta")
+*Kartta museoista*
