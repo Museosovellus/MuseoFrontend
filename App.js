@@ -46,7 +46,7 @@ export default function App() {
 
             return <Ionicons name={iconName} size={size} color={color} />;
           },
-          tabBarActiveTintColor: 'tomato',
+          tabBarActiveTintColor: '#05968f',
           tabBarInactiveTintColor: 'gray',
         })}>
           <Tab.Screen name="Etusivu" component={Home} />
