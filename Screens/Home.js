@@ -10,11 +10,18 @@ export default function Home({ navigation }) {
 
   return (
     <View style={[styles.container, { backgroundColor: theme.background }]}>
-      <Text style={[styles.header, { color: theme.color }]}>Museoäppi</Text>
+      <Text style={styles.letter}>M</Text>
+      <Text style={[styles.header, { color: theme.color }]}>MUSEOÄPPI</Text>
 
       <StatusBar />
 
+
+      <Text style={[styles.theme, { color: theme.color }]}>vaihda tummaan tilaan</Text>
+
       <Switch
+        trackColor={{false: '#767577', true: '#81b0ff'}}
+        ios_backgroundColor="#3e3e3e"
+        style={{ transform: [{ scaleX: .5 }, { scaleY: .5 }] }}
         value={mode}
         onValueChange={(value) => {
           setMode(value);
@@ -32,8 +39,20 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   header: {
-    fontSize: 30,
+    fontSize: 46,
     color: '#05968f',
     fontWeight: 'bold',
+    marginBottom: 20,
+  },
+  letter: {
+    fontSize: 350,
+    color: '#05968f',
+    fontWeight: 'bold',
+    marginBottom: -80,
+  },
+  theme: {
+    fontSize: 10,
+    color: '#05968f',
+    marginTop: 50,
   },
 });
