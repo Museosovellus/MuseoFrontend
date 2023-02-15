@@ -27,14 +27,20 @@
   ```sh
   npx expo start
   ```
+4. Skannaa terminaaliin tuleva QR-koodi kamerasovelluksella (iOS) tai Expo-sovelluksella (Android)
 
 ### Käyttöliittymä
 
-![Kotisivu](/assets/img/IMG_3548.PNG "Kotisivu")
-*Sovelluksen kotisivu*
-![Museolista](/assets/img/IMG_3549.PNG "Museolista")
-*Listaus museoista*
-![Museolistan hakutoiminto](/assets/img/IMG_3550.PNG "Museolistan hakutoiminto")
-*Listaus museoista, jossa haettu nimen perusteella*
-![Museokartta](/assets/img/IMG_3551.PNG "Museokartta")
-*Kartta museoista*
+<figure>
+  <img src='assets/img/IMG_3548.PNG' width='390' height='844'>
+  <figcaption>Sovelluksen etusivu</figcaption><br>
+
+  <img src='assets/img/IMG_3549.PNG' width='390' height='844'>
+  <figcaption>Museoiden listanäkymä</figcaption><br>
+
+  <img src='assets/img/IMG_3550.PNG' width='390' height='844'>
+  <figcaption>Museoiden listanäkymä rajattuna hakusanalla</figcaption><br>
+
+  <img src='assets/img/IMG_3551.PNG' width='390' height='844'>
+  <figcaption>Museoiden karttanäkymä</figcaption>
+</figure>
