@@ -7,10 +7,12 @@
 
 ### Käytetyt teknologiat ja muut resurssit
 
-- [React Native](https://reactnative.dev) ```sh
+- [React Native](https://reactnative.dev) 
+- ```sh
   React Nativella luodaan natiiveja sovelluksia Androidille ja IOS:ille.
   ```
-- [Expo](https://expo.dev)  ```sh
+- [Expo](https://expo.dev)  
+- ```sh
   Expo on avoimen lähdekoodin alusta universaalien natiivisovellusten tekemiseen Androidille, iOS:lle ja webille JavaScriptin ja Reactin avulla.
   ```
 - [Museotilasto](https://www.museotilasto.fi)
