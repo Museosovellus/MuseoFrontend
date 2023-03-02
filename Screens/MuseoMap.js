@@ -1,15 +1,8 @@
-import { useEffect, useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 import MapView, { Marker } from 'react-native-maps';
 
 export default function MuseoMap() {
-  const [data, setData] = useState([]);
-
-  useEffect(() => {
-    fetch('https://museum-rest-api.herokuapp.com/museums')
-      .then(response => response.json())
-      .then(data => setData(data))
-  }, []);
+  const data = require('../museums.json');
 
   return (
     <View style={styles.container}>
@@ -27,7 +20,7 @@ export default function MuseoMap() {
         {data.map((marker, index) => (
           <Marker
             key={index}
-            title={marker.name}
+            title={marker.nimi}
             coordinate={{ latitude: marker.latitude, longitude: marker.longitude }}
           />
         ))}
