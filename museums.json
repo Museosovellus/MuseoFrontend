@@ -4256,8 +4256,8 @@
       "tulot yhteensa": "276 617"
     },
     "48": {
-      "latitude": "61.1919",
-      "longitude": "28.7796",  
+      "latitude": "0",
+      "longitude": "0",  
       "nimi": "Imatran kaupungin museot",
       "numero": "48",
       "kunta": "Imatra",
@@ -4389,8 +4389,8 @@
       "tulot yhteensa": "72 345"
     },
     "92": {
-      "latitude": "",
-      "longitude": "",  
+      "latitude": "63.7072",
+      "longitude": "22.7426",  
       "nimi": "Jakobstads museum",
       "numero": "92",
       "kunta": "Pietarsaari",
@@ -4522,8 +4522,8 @@
       "tulot yhteensa": "402 010"
     },
     "50": {
-      "latitude": "",
-      "longitude": "",  
+      "latitude": "61.6826",
+      "longitude": "27.2620",  
       "nimi": "Jalkaväkimuseo",
       "numero": "50",
       "kunta": "Mikkeli",
@@ -4655,8 +4655,8 @@
       "tulot yhteensa": "268 639"
     },
     "1498": {
-      "latitude": "",
-      "longitude": "",  
+      "latitude": "0",
+      "longitude": "0",  
       "nimi": "Joensuun museot",
       "numero": "1498",
       "kunta": "Joensuu",
@@ -4788,8 +4788,8 @@
       "tulot yhteensa": "927 777"
     },
     "1499": {
-      "latitude": "",
-      "longitude": "",  
+      "latitude": "0",
+      "longitude": "0",  
       "nimi": "Jyväskylän museot",
       "numero": "1499",
       "kunta": "Jyväskylä",
@@ -4921,8 +4921,8 @@
       "tulot yhteensa": "1 528 254"
     },
     "154": {
-      "latitude": "",
-      "longitude": "",  
+      "latitude": "62.2433",
+      "longitude": "25.7388",  
       "nimi": "Jyväskylän yliopiston tiedemuseo",
       "numero": "154",
       "kunta": "Jyväskylä",
@@ -5054,8 +5054,8 @@
       "tulot yhteensa": "150 269"
     },
     "163": {
-      "latitude": "",
-      "longitude": "",  
+      "latitude": "60.4745",
+      "longitude": "25.0937",  
       "nimi": "Järvenpään taidemuseo",
       "numero": "163",
       "kunta": "Järvenpää",
@@ -5187,8 +5187,8 @@
       "tulot yhteensa": "263 659"
     },
     "52": {
-      "latitude": "",
-      "longitude": "",  
+      "latitude": "63.8373",
+      "longitude": "23.1305",  
       "nimi": "K.H. Renlundin museo ",
       "numero": "52",
       "kunta": "Kokkola",
@@ -5320,8 +5320,8 @@
       "tulot yhteensa": "470 362"
     },
     "53": {
-      "latitude": "",
-      "longitude": "",  
+      "latitude": "64.2217",
+      "longitude": "27.7384",  
       "nimi": "Kainuun Museo",
       "numero": "53",
       "kunta": "Kajaani",
@@ -5453,8 +5453,8 @@
       "tulot yhteensa": "357 503"
     },
     "54": {
-      "latitude": "",
-      "longitude": "",  
+      "latitude": "64.2268",
+      "longitude": "27.7278",  
       "nimi": "Kajaanin taidemuseo",
       "numero": "54",
       "kunta": "Kajaani",
@@ -5586,8 +5586,8 @@
       "tulot yhteensa": "161 379"
     },
     "55": {
-      "latitude": "",
-      "longitude": "",  
+      "latitude": "61.8464",
+      "longitude": "22.4662",  
       "nimi": "Kankaanpään kaupunginmuseo",
       "numero": "55",
       "kunta": "Kankaanpää",
@@ -5719,8 +5719,8 @@
       "tulot yhteensa": "57 917"
     },
     "152": {
-      "latitude": "",
-      "longitude": "",  
+      "latitude": "60.1703",
+      "longitude": "24.9443",  
       "nimi": "Kansallisgalleria",
       "numero": "152",
       "kunta": "Helsinki",
@@ -5852,8 +5852,8 @@
       "tulot yhteensa": "26 558 726"
     },
     "56": {
-      "latitude": "",
-      "longitude": "",  
+      "latitude": "60.5330",
+      "longitude": "24.2006",  
       "nimi": "Karkkilan ruukkimuseo Senkka",
       "numero": "56",
       "kunta": "Karkkila",
@@ -5985,8 +5985,8 @@
       "tulot yhteensa": "118 868"
     },
     "1491": {
-      "latitude": "",
-      "longitude": "",  
+      "latitude": "0",
+      "longitude": "0",  
       "nimi": "Kauhavan kaupungin museot",
       "numero": "1491",
       "kunta": "Kauhava",
@@ -6118,8 +6118,8 @@
       "tulot yhteensa": "3 349"
   },
     "57": {
-      "latitude": "",
-      "longitude": "",  
+      "latitude": "65.7358",
+      "longitude": "24.5590",  
       "nimi": "Kemin taidemuseo",
       "numero": "57",
       "kunta": "Kemi",
@@ -6251,8 +6251,8 @@
       "tulot yhteensa": "323 730"
     },
     "1469": {
-      "latitude": "",
-      "longitude": "",  
+      "latitude": "60.4009",
+      "longitude": "25.1094",  
       "nimi": "Keravan taide- ja museokeskus Sinkka",
       "numero": "1469",
       "kunta": "Kerava",
@@ -6384,8 +6384,8 @@
       "tulot yhteensa": "225 990"
     },
     "61": {
-      "latitude": "",
-      "longitude": "",  
+      "latitude": "62.2545",
+      "longitude": "24.7078",  
       "nimi": "Keuruun museo",
       "numero": "61",
       "kunta": "Keuruu",
@@ -6517,8 +6517,8 @@
       "tulot yhteensa": "166 849"
     },
     "209": {
-      "latitude": "",
-      "longitude": "",  
+      "latitude": "63.8374",
+      "longitude": "23.1296",  
       "nimi": "Kieppi Kokkolan luonnontieteellinen museo",
       "numero": "209",
       "kunta": "Kokkola",
@@ -6650,8 +6650,8 @@
       "tulot yhteensa": "2 008"
   },
     "1488": {
-      "latitude": "",
-      "longitude": "",  
+      "latitude": "61.4635",
+      "longitude": "24.0739",  
       "nimi": "Kimmo Pyykkö -taidemuseo",
       "numero": "1488",
       "kunta": "Kangasala",
@@ -6783,8 +6783,8 @@
       "tulot yhteensa": "568 039"
     },
     "64": {
-      "latitude": "",
-      "longitude": "",  
+      "latitude": "0",
+      "longitude": "0",  
       "nimi": "Kuhmon museot",
       "numero": "64",
       "kunta": "Kuhmo",
@@ -6916,8 +6916,8 @@
       "tulot yhteensa": "16 075"
     },
     "65": {
-      "latitude": "",
-      "longitude": "",  
+      "latitude": "68.1782",
+      "longitude": "27.1029",  
       "nimi": "Kultamuseo",
       "numero": "65",
       "kunta": "Sodankylä",
@@ -7049,8 +7049,8 @@
       "tulot yhteensa": "373 597"
     },
     "66": {
-      "latitude": "",
-      "longitude": "",  
+      "latitude": "62.8925",
+      "longitude": "27.6872",  
       "nimi": "Kuopion kulttuurihistoriallinen museo",
       "numero": "66",
       "kunta": "Kuopio",
@@ -7315,8 +7315,8 @@
       "tulot yhteensa": "610 009"
     },
     "68": {
-      "latitude": "",
-      "longitude": "",  
+      "latitude": "62.8920",
+      "longitude": "27.6826",  
       "nimi": "Kuopion taidemuseo",
       "numero": "68",
       "kunta": "Kuopio",
@@ -7448,8 +7448,8 @@
       "tulot yhteensa": "470 207"
     },
     "70": {
-      "latitude": "",
-      "longitude": "",  
+      "latitude": "60.4729",
+      "longitude": "26.9457",  
       "nimi": "Kymenlaakson museo",
       "numero": "70",
       "kunta": "Kotka",
@@ -7581,8 +7581,8 @@
       "tulot yhteensa": "1 220 140"
     },
     "1494": {
-      "latitude": "",
-      "longitude": "",  
+      "latitude": "0",
+      "longitude": "0",  
       "nimi": "Lahden museot",
       "numero": "1494",
       "kunta": "Lahti",
@@ -7714,8 +7714,8 @@
       "tulot yhteensa": "1 794 420"
     },
     "73": {
-      "latitude": "",
-      "longitude": "",  
+      "latitude": "66.5076",
+      "longitude": "25.7263",  
       "nimi": "Lapin maakuntamuseo",
       "numero": "73",
       "kunta": "Rovaniemi",
@@ -7847,8 +7847,8 @@
       "tulot yhteensa": "940 248"
     },
     "1477": {
-      "latitude": "",
-      "longitude": "",  
+      "latitude": "0",
+      "longitude": "0",  
       "nimi": "Lappeenrannan museot",
       "numero": "1477",
       "kunta": "Lappeenranta",
@@ -7980,8 +7980,8 @@
       "tulot yhteensa": "1 027 250"
     },
     "190": {
-      "latitude": "",
-      "longitude": "",  
+      "latitude": "0",
+      "longitude": "0",  
       "nimi": "Lapuan kaupungin museot",
       "numero": "190",
       "kunta": "Lapua",
@@ -8113,8 +8113,8 @@
       "tulot yhteensa": "130 190"
     },
     "1489": {
-      "latitude": "",
-      "longitude": "",  
+      "latitude": "60.1877",
+      "longitude": "24.9585",  
       "nimi": "Lastentarhamuseo",
       "numero": "1489",
       "kunta": "Helsinki",
@@ -8246,8 +8246,8 @@
       "tulot yhteensa": "437 802"
     },
     "86": {
-      "latitude": "",
-      "longitude": "",  
+      "latitude": "60.5633",
+      "longitude": "22.4662",  
       "nimi": "Liedon museo",
       "numero": "86",
       "kunta": "Lieto",
@@ -8379,8 +8379,8 @@
       "tulot yhteensa": "232 354"
     },
     "77": {
-      "latitude": "",
-      "longitude": "",  
+      "latitude": "60.2560",
+      "longitude": "24.0708",  
       "nimi": "Lohjan Museo",
       "numero": "77",
       "kunta": "Lohja",
@@ -8512,8 +8512,8 @@
       "tulot yhteensa": "217 988"
     },
     "197": {
-      "latitude": "",
-      "longitude": "",  
+      "latitude": "60.4265",
+      "longitude": "25.0503",  
       "nimi": "Lottamuseo",
       "numero": "197",
       "kunta": "Tuusula",
@@ -8645,8 +8645,8 @@
       "tulot yhteensa": "874 035"
     },
     "78": {
-      "latitude": "",
-      "longitude": "",  
+      "latitude": "60.4623",
+      "longitude": "26.2250",  
       "nimi": "Loviisan kaupungin museo",
       "numero": "78",
       "kunta": "Loviisa",
@@ -8778,8 +8778,8 @@
       "tulot yhteensa": "60 009"
     },
     "150": {
-      "latitude": "",
-      "longitude": "",  
+      "latitude": "60.1715",
+      "longitude": "24.9319",  
       "nimi": "Luonnontieteellinen keskusmuseo",
       "numero": "150",
       "kunta": "Helsinki",
@@ -8911,8 +8911,8 @@
       "tulot yhteensa": "1 364 304"
     },
     "80": {
-      "latitude": "",
-      "longitude": "",  
+      "latitude": "0",
+      "longitude": "0",  
       "nimi": "Lönnströmin museot",
       "numero": "80",
       "kunta": "Rauma",
@@ -9044,8 +9044,8 @@
       "tulot yhteensa": "134 561"
     },
     "81": {
-      "latitude": "",
-      "longitude": "",  
+      "latitude": "60.1589",
+      "longitude": "24.9611",  
       "nimi": "Mannerheim-museo",
       "numero": "81",
       "kunta": "Helsinki",
@@ -9177,8 +9177,8 @@
       "tulot yhteensa": "134 448"
     },
     "82": {
-      "latitude": "",
-      "longitude": "",  
+      "latitude": "0",
+      "longitude": "0",  
       "nimi": "Miehikkälän  museot",
       "numero": "82",
       "kunta": "Miehikkälä",
@@ -9310,8 +9310,8 @@
       "tulot yhteensa": "148 766"
     },
     "83": {
-      "latitude": "",
-      "longitude": "",  
+      "latitude": "0",
+      "longitude": "0",  
       "nimi": "Mikkelin kaupungin museot",
       "numero": "83",
       "kunta": "Mikkeli",
@@ -9443,8 +9443,8 @@
       "tulot yhteensa": "492 362"
     },
     "181": {
-      "latitude": "",
-      "longitude": "",  
+      "latitude": "60.1787",
+      "longitude": "24.7972",  
       "nimi": "Museo Leikki",
       "numero": "181",
       "kunta": "Espoo",
@@ -9576,8 +9576,8 @@
       "tulot yhteensa": "621 697"
     },
     "121": {
-      "latitude": "",
-      "longitude": "",  
+      "latitude": "61.0051",
+      "longitude": "24.4579",  
       "nimi": "Museo Militaria",
       "numero": "121",
       "kunta": "Hämeenlinna",
@@ -9709,8 +9709,8 @@
       "tulot yhteensa": "481 421"
     },
     "168": {
-      "latitude": "",
-      "longitude": "",  
+      "latitude": "60.4672",
+      "longitude": "22.0191",  
       "nimi": "Naantalin museo",
       "numero": "168",
       "kunta": "Naantali",
@@ -9842,8 +9842,8 @@
       "tulot yhteensa": "106 955"
     },
     "87": {
-      "latitude": "",
-      "longitude": "",  
+      "latitude": "63.0152",
+      "longitude": "23.8350",  
       "nimi": "Nelimarkka-museo",
       "numero": "87",
       "kunta": "Alajärvi",
