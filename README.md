@@ -7,9 +7,24 @@
 
 ### Käytetyt teknologiat ja muut resurssit
 
-- [React Native](https://reactnative.dev)
-- [Expo](https://expo.dev)
+- [React Native](https://reactnative.dev) 
+- ```sh
+  React Nativella luodaan natiiveja sovelluksia Androidille ja IOS:ille.
+  ```
+- [Google Firebase](https://firebase.google.com)
+- ```sh
+  Firebase on sovellusten kehitysalusta johonka voidaan lisätä ja säilyttää tietoja.
+  ```
+- [Expo](https://expo.dev)  
+- ```sh
+  Expo on avoimen lähdekoodin alusta universaalien natiivisovellusten tekemiseen Androidille, iOS:lle ja webille JavaScriptin ja Reactin avulla.
+  ```
 - [Museotilasto](https://www.museotilasto.fi)
+```sh
+  Museotilaston vuosittainen data vuodesta 2007 lähtien on lisensoitu Creative Commons Nimeä 4.0 (CC BY 4.0) lisenssillä. Tilastotiedon uudelleenkäytön yhteydessä tulee mainita Museovirasto tiedon tuottajana ja Museotilasto tiedon lähteenä. Lisenssiin voi tutustua tarkemmin verkossa osoitteessa https://creativecommons.org/licenses/by/4.0/deed.fi.
+
+Lisensointi koskee Excel- ja CSV-muodossa koostettuja vuosittaisia taulukoita sekä kaikkea tilastohaun kautta haettua tietoa. Valittu lisenssi tarkoittaa, että tilastotiedot ovat vapaasti käytettävissä, kunhan alkuperäislähteeseen viitataan. Lisensointi ei toistaiseksi koske tilastojulkaisuja, joiden osalta käyttöoikeuksia ei ole erikseen määritelty.
+  ```
 
 ### Asennus
 
