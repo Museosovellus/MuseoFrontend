@@ -49,9 +49,9 @@ export default function App() {
           tabBarActiveTintColor: '#05968f',
           tabBarInactiveTintColor: 'gray',
         })}>
-          <Tab.Screen name="Etusivu" component={Home} />
-          <Tab.Screen name="Museot" component={MuseoList} />
-          <Tab.Screen name="Kartta" component={MuseoMap} />
+          <Tab.Screen name="Etusivu" component={Home} options={{ headerShown: false }} />
+          <Tab.Screen name="Museot" component={MuseoList} options={{ headerShown: false }} />
+          <Tab.Screen name="Kartta" component={MuseoMap} options={{ headerShown: false }} />
         </Tab.Navigator>
       </NavigationContainer>
     </themeContext.Provider>
