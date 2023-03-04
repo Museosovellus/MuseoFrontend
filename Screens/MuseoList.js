@@ -21,31 +21,20 @@ export default function MuseoList() {
   }, [])
 
   const searchFunction = (text) => {
-    if (text) {
-      // Inserted text is not blank
-      // Filter the data and update FilteredData
-      const newData = data.filter(function (item) {
-        // Applying filter for the inserted text in search bar
-        const itemData = item.name
-          ? item.name.toUpperCase()
-          : ''.toUpperCase();
-        const textData = text.toUpperCase();
-        return itemData.indexOf(textData) > -1;
-      });
-      setFilteredData(newData);
-      setSearch(text);
-    } else {
-      // Inserted text is blank
-      // Update FilteredData with data
-      setFilteredData(data);
-      setSearch(text);
-    }
+    const newData = data.filter((item) => {
+      const itemName = (item.name).toLowerCase();
+      const itemCity = (item.city).toLowerCase();
+      const searchTerm = text.toLowerCase();
+      return itemName.includes(searchTerm) || itemCity.includes(searchTerm);
+    })
+    setFilteredData(newData);
+    setSearch(text);
   }
 
   return (
     <View style={[styles.container, { backgroundColor: theme.background }]}>
       <TextInput
-        onChangeText={(text) => searchFunction(text)}
+        onChangeText={searchFunction}
         value={search}
         style={styles.searchbar}
         placeholder="museohaku"
@@ -57,7 +46,7 @@ export default function MuseoList() {
             <Text style={styles.item}>{item.name}</Text>
           </View>
         }
-        style={{ marginBottom: 100 }} />
+        style={{ marginBottom: 30 }} />
     </View>
   );
 }
