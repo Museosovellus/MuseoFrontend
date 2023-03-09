@@ -1,19 +1,24 @@
 import React from 'react';
-import { StyleSheet, Text, View, Button, FlatList, TextInput } from 'react-native';
+import { StyleSheet, Text, View, Button, FlatList, TextInput, TouchableOpacity } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import { useState, useEffect, useContext } from 'react';
 import themeContext from '../config/themeContext';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack'
+import MuseoInfo from './MuseoInfo';
 
-export default function MuseoList() {
+const Stack = createNativeStackNavigator();
+
+function ListScreen({ navigation }) {
   const theme = useContext(themeContext);
   const [search, setSearch] = useState('');
   const data = require('../museums.json');
-  const filteredData = require('../museums.json');
+  const [filteredData, setFilteredData] = useState(data);
 
   const searchFunction = (text) => {
     const newData = data.filter((item) => {
-      const itemName = (item.name).toLowerCase();
-      const itemCity = (item.city).toLowerCase();
+      const itemName = (item.nimi).toLowerCase();
+      const itemCity = (item.kunta).toLowerCase();
       const searchTerm = text.toLowerCase();
       return itemName.includes(searchTerm) || itemCity.includes(searchTerm);
     })
@@ -32,12 +37,25 @@ export default function MuseoList() {
       <FlatList
         data={filteredData}
         renderItem={({ item }) =>
-          <View>
+          <TouchableOpacity onPress={() => 
+            navigation.navigate('Museum', {name: item.nimi})
+          }>
             <Text style={styles.item}>{item.nimi}</Text>
-          </View>
+          </TouchableOpacity>
         }
         style={{ marginBottom: 30 }} />
     </View>
+  );
+}
+
+export default function MuseoList() {
+  return (
+    
+      <Stack.Navigator>
+        <Stack.Screen name='List' component={ListScreen} />
+        <Stack.Screen name='Museum' component={MuseoInfo} />
+      </Stack.Navigator>
+    
   );
 }
 
