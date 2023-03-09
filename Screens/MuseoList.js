@@ -6,19 +6,9 @@ import themeContext from '../config/themeContext';
 
 export default function MuseoList() {
   const theme = useContext(themeContext);
-  const [data, setData] = useState([]);
-  const [filteredData, setFilteredData] = useState([]);
   const [search, setSearch] = useState('');
-
-
-  useEffect(() => {
-    fetch('https://museum-rest-api.herokuapp.com/museums')
-      .then(response => response.json())
-      .then((data) => {
-        setData(data);
-        setFilteredData(data);
-      });
-  }, [])
+  const data = require('../museums.json');
+  const filteredData = require('../museums.json');
 
   const searchFunction = (text) => {
     const newData = data.filter((item) => {
@@ -43,7 +33,7 @@ export default function MuseoList() {
         data={filteredData}
         renderItem={({ item }) =>
           <View>
-            <Text style={styles.item}>{item.name}</Text>
+            <Text style={styles.item}>{item.nimi}</Text>
           </View>
         }
         style={{ marginBottom: 30 }} />
