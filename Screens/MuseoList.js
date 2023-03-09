@@ -1,20 +1,24 @@
 import React from 'react';
-import { StyleSheet, Text, View, Button, FlatList, TextInput } from 'react-native';
-import { ScrollView } from 'react-native-gesture-handler';
+import { StyleSheet, Text, View, Button, FlatList, TextInput, TouchableOpacity } from 'react-native';
 import { useState, useEffect, useContext } from 'react';
 import themeContext from '../config/themeContext';
-import { Entypo } from '@expo/vector-icons';
+import { createNativeStackNavigator } from '@react-navigation/native-stack'
+import MuseoInfo from './MuseoInfo';
+import { Ionicons } from '@expo/vector-icons'; 
 
-export default function MuseoList() {
+
+const Stack = createNativeStackNavigator();
+
+function ListScreen({ navigation }) {
   const theme = useContext(themeContext);
-  const [search, setSearch] = useState('');
   const data = require('../museums.json');
-  const filteredData = require('../museums.json');
+  const [search, setSearch] = useState('');
+  const [filteredData, setFilteredData] = useState(data);
 
   const searchFunction = (text) => {
     const newData = data.filter((item) => {
-      const itemName = (item.name).toLowerCase();
-      const itemCity = (item.city).toLowerCase();
+      const itemName = (item.nimi).toLowerCase();
+      const itemCity = (item.kunta).toLowerCase();
       const searchTerm = text.toLowerCase();
       return itemName.includes(searchTerm) || itemCity.includes(searchTerm);
     })
@@ -28,17 +32,29 @@ export default function MuseoList() {
         onChangeText={searchFunction}
         value={search}
         style={styles.searchbar}
-        placeholder="museohaku"
+        placeholder="Hae museoa tai kaupunkia"
       />
       <FlatList
         data={filteredData}
         renderItem={({ item }) =>
-          <View style={[styles.box]}>
-            <Text style={styles.item}>{item.nimi}</Text> 
-            <Text style={styles.small}> <Entypo name="location-pin" size={10} /> {item.kunta}</Text>
-          </View>
-        } />
+          <TouchableOpacity 
+          style={styles.box}
+          onPress={() => 
+            navigation.navigate('Museum', {name: item.nimi})}>
+            <Text style={styles.item}>{item.nimi}</Text>
+            <Text style={styles.city}><Ionicons name="location-sharp" /> {item.kunta}</Text>
+          </TouchableOpacity>}
+      />
     </View>
+  );
+}
+
+export default function MuseoList() {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen name='List' component={ListScreen} />
+      <Stack.Screen name='Museum' component={MuseoInfo} />
+    </Stack.Navigator>
   );
 }
 
@@ -53,7 +69,7 @@ const styles = StyleSheet.create({
     borderColor: '#c4c4c4',
     borderWidth: 1,
     margin: 20,
-    marginTop: 60,
+    marginTop: 30,
     padding: 10,
     backgroundColor: '#fafafa',
     width: '90%'
@@ -62,11 +78,12 @@ const styles = StyleSheet.create({
     marginTop: 10,
     marginLeft: 20,
     marginRight: 20,
+    marginBottom: 7,
     fontSize: 20,
     fontWeight: 'bold',
     color: '#05968f',
   },
-  small: {
+  city: {
     marginTop: 10,
     marginLeft: 30,
     marginRight: 20,
