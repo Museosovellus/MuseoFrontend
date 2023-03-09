@@ -9,8 +9,8 @@ const Stack = createNativeStackNavigator();
 
 function ListScreen({ navigation }) {
   const theme = useContext(themeContext);
-  const [search, setSearch] = useState('');
   const data = require('../museums.json');
+  const [search, setSearch] = useState('');
   const [filteredData, setFilteredData] = useState(data);
 
   const searchFunction = (text) => {
@@ -24,24 +24,29 @@ function ListScreen({ navigation }) {
     setSearch(text);
   }
 
+  const listSeparator = () => {
+    return (
+      <View style={{ height: 1, backgroundColor: '#adadad', marginLeft: 30, marginRight: 30 }} />
+    );
+  }
+
   return (
     <View style={[styles.container, { backgroundColor: theme.background }]}>
       <TextInput
         onChangeText={searchFunction}
         value={search}
         style={styles.searchbar}
-        placeholder="museohaku"
+        placeholder="Hae museoa tai kaupunkia"
       />
       <FlatList
         data={filteredData}
         renderItem={({ item }) =>
           <TouchableOpacity onPress={() => 
-            navigation.navigate('Museum', {name: item.nimi})
-          }>
+            navigation.navigate('Museum', {name: item.nimi})}>
             <Text style={styles.item}>{item.nimi}</Text>
             <Text style={styles.city}>{item.kunta}</Text>
-          </TouchableOpacity>
-        }
+          </TouchableOpacity>}
+        ItemSeparatorComponent={listSeparator}
       />
     </View>
   );
@@ -49,12 +54,10 @@ function ListScreen({ navigation }) {
 
 export default function MuseoList() {
   return (
-    
-      <Stack.Navigator>
-        <Stack.Screen name='List' component={ListScreen} />
-        <Stack.Screen name='Museum' component={MuseoInfo} />
-      </Stack.Navigator>
-    
+    <Stack.Navigator>
+      <Stack.Screen name='List' component={ListScreen} />
+      <Stack.Screen name='Museum' component={MuseoInfo} />
+    </Stack.Navigator>
   );
 }
 
@@ -77,6 +80,7 @@ const styles = StyleSheet.create({
     margin: 10,
     marginLeft: 30,
     marginRight: 20,
+    marginBottom: 7,
     fontSize: 20,
     fontWeight: 'bold',
     color: '#05968f',
