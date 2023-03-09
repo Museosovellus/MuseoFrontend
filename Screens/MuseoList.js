@@ -3,6 +3,7 @@ import { StyleSheet, Text, View, Button, FlatList, TextInput } from 'react-nativ
 import { ScrollView } from 'react-native-gesture-handler';
 import { useState, useEffect, useContext } from 'react';
 import themeContext from '../config/themeContext';
+import { Entypo } from '@expo/vector-icons';
 
 export default function MuseoList() {
   const theme = useContext(themeContext);
@@ -32,9 +33,9 @@ export default function MuseoList() {
       <FlatList
         data={filteredData}
         renderItem={({ item }) =>
-          <View>
+          <View style={[styles.box]}>
             <Text style={styles.item}>{item.nimi}</Text> 
-            <Text style={styles.small}>{item.kunta}</Text>
+            <Text style={styles.small}> <Entypo name="location-pin" size={10} /> {item.kunta}</Text>
           </View>
         } />
     </View>
@@ -59,18 +60,28 @@ const styles = StyleSheet.create({
   },
   item: {
     marginTop: 10,
-    marginLeft: 30,
+    marginLeft: 20,
     marginRight: 20,
     fontSize: 20,
     fontWeight: 'bold',
     color: '#05968f',
   },
   small: {
-    marginTop: 0,
+    marginTop: 10,
     marginLeft: 30,
     marginRight: 20,
     fontSize: 10,
     fontWeight: 'normal',
     color: 'grey',
+  },
+  box: {
+    marginTop: 10,
+    marginBottom: 10,
+    margin: 25,
+    padding: 20,
+    paddingBottom: 30,
+    borderColor: '#e9f0ef',
+    borderWidth: 1,
+    backgroundColor: '#f2f5f4',
   }
 });
