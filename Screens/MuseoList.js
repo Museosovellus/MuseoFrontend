@@ -33,10 +33,10 @@ export default function MuseoList() {
         data={filteredData}
         renderItem={({ item }) =>
           <View>
-            <Text style={styles.item}>{item.nimi}</Text>
+            <Text style={styles.item}>{item.nimi}</Text> 
+            <Text style={styles.small}>{item.kunta}</Text>
           </View>
-        }
-        style={{ marginBottom: 30 }} />
+        } />
     </View>
   );
 }
@@ -52,16 +52,25 @@ const styles = StyleSheet.create({
     borderColor: '#c4c4c4',
     borderWidth: 1,
     margin: 20,
+    marginTop: 60,
     padding: 10,
     backgroundColor: '#fafafa',
     width: '90%'
   },
   item: {
-    margin: 10,
+    marginTop: 10,
     marginLeft: 30,
     marginRight: 20,
     fontSize: 20,
     fontWeight: 'bold',
     color: '#05968f',
+  },
+  small: {
+    marginTop: 0,
+    marginLeft: 30,
+    marginRight: 20,
+    fontSize: 10,
+    fontWeight: 'normal',
+    color: 'grey',
   }
 });
