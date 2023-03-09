@@ -1,9 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View, Button, FlatList, TextInput, TouchableOpacity } from 'react-native';
-import { ScrollView } from 'react-native-gesture-handler';
 import { useState, useEffect, useContext } from 'react';
 import themeContext from '../config/themeContext';
-import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import MuseoInfo from './MuseoInfo';
 
