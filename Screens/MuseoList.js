@@ -41,9 +41,10 @@ function ListScreen({ navigation }) {
             navigation.navigate('Museum', {name: item.nimi})
           }>
             <Text style={styles.item}>{item.nimi}</Text>
+            <Text style={styles.city}>{item.kunta}</Text>
           </TouchableOpacity>
         }
-        style={{ marginBottom: 30 }} />
+      />
     </View>
   );
 }
@@ -81,5 +82,10 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: 'bold',
     color: '#05968f',
+  },
+  city: {
+    margin: 2,
+    marginLeft: 30,
+    fontSize: 15,
   }
 });
