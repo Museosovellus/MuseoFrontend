@@ -61,7 +61,7 @@ export default function MuseoList() {
   return (
     <Stack.Navigator>
       <Stack.Screen name='MuseotStack' component={ListScreen} options={{ headerShown: false }} />
-      <Stack.Screen name='Museo' component={MuseoInfo} />
+      <Stack.Screen name='Museo' component={MuseoInfo} options={{ headerShown: false }} />
     </Stack.Navigator>
   );
 }
@@ -77,7 +77,7 @@ const styles = StyleSheet.create({
     borderColor: '#c4c4c4',
     borderWidth: 1,
     margin: 20,
-    marginTop: 30,
+    marginTop: 50,
     padding: 10,
     backgroundColor: '#fafafa',
     width: '90%'
@@ -98,6 +98,7 @@ const styles = StyleSheet.create({
     fontSize: 10,
     fontWeight: 'normal',
     color: 'grey',
+    textTransform: 'uppercase',
   },
   box: {
     marginTop: 10,
@@ -108,5 +109,6 @@ const styles = StyleSheet.create({
     borderColor: '#e9f0ef',
     borderWidth: 1,
     backgroundColor: '#f2f5f4',
+    width: 340,
   }
 });
