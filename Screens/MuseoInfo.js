@@ -1,14 +1,27 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
-import { useContext } from 'react';
+import { useContext, useRef } from 'react';
 import MapView, { Marker } from "react-native-maps";
 import themeContext from '../config/themeContext';
 import { Ionicons } from '@expo/vector-icons';
+import { Button } from "react-native-paper";
 
 export default function MuseoInfo({ route, navigation }) {
 
   const theme = useContext(themeContext);
   const { name, city, province, latitude, longitude, openingHours, index } = route.params;
+  const mapRef = useRef(null);
+  const initialRegion = {
+    latitude: latitude,
+    longitude: longitude,
+    latitudeDelta: 0.01,
+    longitudeDelta: 0.01
+  }
+
+  const centerMap = () => {
+    mapRef.current.animateToRegion(initialRegion, 0.5 * 1000);
+  }
+
   return (
     <View style={[styles.container, { backgroundColor: theme.background}]}>
         <View style={styles.box}>
@@ -17,6 +30,7 @@ export default function MuseoInfo({ route, navigation }) {
       <Text style={styles.hours}>{openingHours}</Text>
       {/* TODO: Tarkemmat aukioloajat ja linkki museon nettisivulle. */}
       <MapView
+        ref={mapRef}
         style={styles.map}
         initialRegion={{
             latitude: latitude,
@@ -33,6 +47,8 @@ export default function MuseoInfo({ route, navigation }) {
           coordinate={{ latitude: latitude, longitude: longitude }}
         />
       </MapView>
+      {/* Ton titlen tilalle joku kiva ikoni :) */}
+      <Button title='Keskitä' onPress={centerMap} />
     </View>
     </View>
   )
