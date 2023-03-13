@@ -4,7 +4,7 @@ import { useState, useEffect, useContext } from 'react';
 import themeContext from '../config/themeContext';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import MuseoInfo from './MuseoInfo';
-import { Ionicons } from '@expo/vector-icons'; 
+import { Ionicons } from '@expo/vector-icons';
 
 
 const Stack = createNativeStackNavigator();
@@ -37,16 +37,17 @@ function ListScreen({ navigation }) {
       <FlatList
         data={filteredData}
         renderItem={({ item }) =>
-          <TouchableOpacity 
-          style={styles.box}
-          onPress={() => 
-            navigation.navigate('Museum', {
-              name: item.nimi, 
-              city: item.kunta,
-              province: item.maakunta,
-              latitude: item.latitude,
-              longitude: item.longitude,
-              openingHours: item['Museon paayksikon avoinna olo']
+          <TouchableOpacity
+            style={styles.box}
+            onPress={() =>
+              navigation.navigate('Museo', {
+                index: item.numero,
+                name: item.nimi,
+                city: item.kunta,
+                province: item.maakunta,
+                latitude: item.latitude,
+                longitude: item.longitude,
+                openingHours: item['Museon paayksikon avoinna olo']
               })}>
             <Text style={styles.item}>{item.nimi}</Text>
             <Text style={styles.city}><Ionicons name="location-sharp" /> {item.kunta}</Text>
@@ -59,8 +60,8 @@ function ListScreen({ navigation }) {
 export default function MuseoList() {
   return (
     <Stack.Navigator>
-      <Stack.Screen name='List' component={ListScreen} />
-      <Stack.Screen name='Museum' component={MuseoInfo} />
+      <Stack.Screen name='MuseotStack' component={ListScreen} options={{ headerShown: false }} />
+      <Stack.Screen name='Museo' component={MuseoInfo} />
     </Stack.Navigator>
   );
 }
