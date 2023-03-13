@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View, Button, FlatList, TextInput, TouchableOpacity } from 'react-native';
 import { useState, useEffect, useContext } from 'react';
 import themeContext from '../config/themeContext';
-import { createNativeStackNavigator } from '@react-navigation/native-stack'
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import MuseoInfo from './MuseoInfo';
 import { Ionicons } from '@expo/vector-icons'; 
 
@@ -40,7 +40,14 @@ function ListScreen({ navigation }) {
           <TouchableOpacity 
           style={styles.box}
           onPress={() => 
-            navigation.navigate('Museum', {name: item.nimi})}>
+            navigation.navigate('Museum', {
+              name: item.nimi, 
+              city: item.kunta,
+              province: item.maakunta,
+              latitude: item.latitude,
+              longitude: item.longitude,
+              openingHours: item['Museon paayksikon avoinna olo']
+              })}>
             <Text style={styles.item}>{item.nimi}</Text>
             <Text style={styles.city}><Ionicons name="location-sharp" /> {item.kunta}</Text>
           </TouchableOpacity>}
