@@ -12,8 +12,8 @@ export default function LoggedIn() {
     };
 
     return (
-        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-            <Text>Logged in</Text>
+        <View>
+            <Text></Text>
             <Button title="Log out" onPress={logout} />
         </View>
     );

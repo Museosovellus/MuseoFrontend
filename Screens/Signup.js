@@ -1,9 +1,11 @@
-import { View, Text, Button, TextInput, StyleSheet } from "react-native";
+import { View, Text, Button, TextInput, StyleSheet, Alert } from "react-native";
 import { createUserWithEmailAndPassword } from "firebase/auth";
+import { useNavigation } from "@react-navigation/native";
 import React, { useState } from "react";
 import { auth } from "../firebaseConfig";
 
-export default function Signup() {
+export default function Signup({ navigation }) {
+    const [username, setUsername] = useState('')
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
@@ -12,7 +14,19 @@ export default function Signup() {
     const createAccount = async () => {
         try {
             if (password === confirmPassword) {
-                await createUserWithEmailAndPassword(auth, email, password);
+                let res = await createUserWithEmailAndPassword(auth, email, password);
+                if (res && res.user) {Alert.alert("Käyttäjän luominen onnistui.")} 
+                if (res.user) {
+                  auth
+                    .currentUser.updateProfile({
+                      displayName: username,
+                    })
+                    .then(() => navigation.replace("Login"))
+                    .catch((error) => {
+                      alert(error);
+                      console.error(error);
+                    });
+                  }
             } else {
                 setError('Salasanat eivät täsmää')
             }
@@ -29,6 +43,14 @@ export default function Signup() {
 
         {error && <Text style={styles.error}>{error}</Text>}
 
+        <TextInput
+          value={username}
+          onChangeText={setUsername}
+          placeholder="Enter username"
+          autoCapitalize="none"
+          placeholderTextColor="#aaa"
+          style={styles.input}
+        />
         <TextInput
           value={email}
           onChangeText={setEmail}
@@ -60,7 +82,7 @@ export default function Signup() {
         <Button
           title="Create Account"
           onPress={createAccount}
-          disabled={!email || !password || !confirmPassword}
+          disabled={!username || !email || !password || !confirmPassword}
         />
       </View>
     </View>
