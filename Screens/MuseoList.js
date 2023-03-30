@@ -9,7 +9,7 @@ import { Ionicons } from '@expo/vector-icons';
 
 const Stack = createNativeStackNavigator();
 
-function ListScreen({ navigation }) {
+export function ListScreen({ navigation }) {
   const theme = useContext(themeContext);
   const data = require('../museums.json');
   const [search, setSearch] = useState('');
