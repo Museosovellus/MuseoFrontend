@@ -3,6 +3,7 @@ import { StyleSheet, Text, View, Button, useColorScheme, Switch } from 'react-na
 import { StatusBar } from 'expo-status-bar';
 import { EventRegister } from 'react-native-event-listeners';
 import themeContext from '../config/themeContext';
+import Signup from './Signup';
 
 export default function Home({ navigation }) {
   const theme = useContext(themeContext);

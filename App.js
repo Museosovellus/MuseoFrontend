@@ -10,11 +10,23 @@ import MuseoList from './Screens/MuseoList';
 import { EventRegister } from 'react-native-event-listeners';
 import themeContext from './config/themeContext';
 import theme from './config/theme';
+import { onAuthStateChanged } from 'firebase/auth';
+import Profile from './Screens/Profile';
+import { auth } from './firebaseConfig';
 
 const Tab = createBottomTabNavigator();
 
 export default function App() {
   const [mode, setMode] = useState(false);
+  const [loggedIn, setLoggedIn] = useState(false);
+
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      setLoggedIn(true);
+    } else {
+      setLoggedIn(false);
+    }
+  })
 
   useEffect(() => {
     let eventListener = EventRegister.addEventListener(
@@ -42,6 +54,8 @@ export default function App() {
               iconName = focused ? 'list' : 'list-outline';
             } else if (route.name === 'Kartta') {
               iconName = focused ? 'location' : 'location-outline';
+            } else if (route.name === 'Käyttäjä') {
+              iconName = focused ? 'ios-person' : 'ios-person-outline'
             }
 
             return <Ionicons name={iconName} size={size} color={color} />;
@@ -52,6 +66,7 @@ export default function App() {
           <Tab.Screen name="Etusivu" component={Home} options={{ headerShown: false }} />
           <Tab.Screen name="Museot" component={MuseoList} options={{ headerShown: false }} />
           <Tab.Screen name="Kartta" component={MuseoMap} options={{ headerShown: false }} />
+          <Tab.Screen name="Käyttäjä" component={Profile} options={{ headerShown: false }} />
         </Tab.Navigator>
       </NavigationContainer>
     </themeContext.Provider>
