@@ -26,25 +26,25 @@ export function MuseoMap({ navigation }) {
       >
         {data.map((marker, index) => (
           <Marker
-            testID={`marker`}
+            testID='marker'
             key={index}
-            title={marker.nimi}
+            title={marker.name}
             coordinate={{ latitude: marker.latitude, longitude: marker.longitude }}
           >
             <Callout>
               <View>
-                <Text>{marker.nimi}</Text>
+                <Text>{marker.name}</Text>
                 <Button
                   title='Näytä lisätiedot'
                   onPress={() => {
                     navigation.navigate('Museo', {
-                      index: marker.numero,
-                      name: marker.nimi,
-                      city: marker.kunta,
-                      province: marker.maakunta,
+                      index: marker.number,
+                      name: marker.name,
+                      city: marker.city,
+                      province: marker.province,
                       latitude: marker.latitude,
                       longitude: marker.longitude,
-                      openingHours: marker['Museon paayksikon avoinna olo']
+                      openingHours: marker.openingHours
                     })
                   }}
                 />
@@ -59,12 +59,10 @@ export function MuseoMap({ navigation }) {
 
 export default function Main() {
   return (
-    <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen name='KarttaStack' component={MuseoMap} options={{ headerShown: false }} />
-        <Stack.Screen name='Museo' component={MuseoInfo} />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <Stack.Navigator>
+      <Stack.Screen name='KarttaStack' component={MuseoMap} options={{ headerShown: false }} />
+      <Stack.Screen name='Museo' component={MuseoInfo} />
+    </Stack.Navigator>
   )
 }
 

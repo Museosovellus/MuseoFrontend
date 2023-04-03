@@ -17,8 +17,8 @@ export function ListScreen({ navigation }) {
 
   const searchFunction = (text) => {
     const newData = data.filter((item) => {
-      const itemName = (item.nimi).toLowerCase();
-      const itemCity = (item.kunta).toLowerCase();
+      const itemName = (item.name).toLowerCase();
+      const itemCity = (item.city).toLowerCase();
       const searchTerm = text.toLowerCase();
       return itemName.includes(searchTerm) || itemCity.includes(searchTerm);
     })
@@ -41,16 +41,16 @@ export function ListScreen({ navigation }) {
             style={styles.box}
             onPress={() =>
               navigation.navigate('Museo', {
-                index: item.numero,
-                name: item.nimi,
-                city: item.kunta,
-                province: item.maakunta,
+                index: item.number,
+                name: item.name,
+                city: item.city,
+                province: item.province,
                 latitude: item.latitude,
                 longitude: item.longitude,
-                openingHours: item['Museon paayksikon avoinna olo']
+                openingHours: item.openingHours
               })}>
-            <Text style={styles.item}>{item.nimi}</Text>
-            <Text style={styles.city}><Ionicons name="location-sharp" /> {item.kunta}</Text>
+            <Text style={styles.item}>{item.name}</Text>
+            <Text style={styles.city}><Ionicons name="location-sharp" /> {item.city}</Text>
           </TouchableOpacity>}
       />
     </View>
