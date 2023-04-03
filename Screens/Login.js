@@ -17,7 +17,8 @@ export default function Login({ navigation }) {
     const loginUser = async () => {
       try {
         let res = await signInWithEmailAndPassword(auth, email, password);
-        if (res && res.user) {Alert.alert("Kirjautuminen onnistui")}
+        if (res && res.user) {Alert.alert("Sisäänkirjautuminen onnistui")}
+        navigation.navigate("Profile");
       } catch (error) {
         if (error.code === 'auth/invalid-email' || error.code === 'auth/wrong-password') {
           setError('Virheellinen sähköposti tai salasana');

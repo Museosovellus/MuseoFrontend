@@ -54,6 +54,8 @@ export default function App() {
               iconName = focused ? 'list' : 'list-outline';
             } else if (route.name === 'Kartta') {
               iconName = focused ? 'location' : 'location-outline';
+            } else if (route.name === 'Käyttäjä') {
+              iconName = focused ? 'ios-person' : 'ios-person-outline'
             }
 
             return <Ionicons name={iconName} size={size} color={color} />;

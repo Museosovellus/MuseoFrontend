@@ -29,7 +29,7 @@ function ProfileScreen({ navigation }) {
         <View>
         { loggedIn ? (
         <>
-        <LoggedIn />
+        <LoggedIn user={user}/>
         </>
         ) : (
         <>   

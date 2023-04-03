@@ -1,5 +1,5 @@
 import { View, Text, Button, TextInput, StyleSheet, Alert } from "react-native";
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { useNavigation } from "@react-navigation/native";
 import React, { useState } from "react";
 import { auth } from "../firebaseConfig";
@@ -15,18 +15,17 @@ export default function Signup({ navigation }) {
         try {
             if (password === confirmPassword) {
                 let res = await createUserWithEmailAndPassword(auth, email, password);
-                if (res && res.user) {Alert.alert("Käyttäjän luominen onnistui.")} 
-                if (res.user) {
-                  auth
-                    .currentUser.updateProfile({
-                      displayName: username,
-                    })
-                    .then(() => navigation.replace("Login"))
-                    .catch((error) => {
-                      alert(error);
-                      console.error(error);
-                    });
-                  }
+                if (res && res.user) {
+                  Alert.alert("Käyttäjän luominen onnistui.");
+                  await signInWithEmailAndPassword(auth, email, password); // Sign in the user to get the updated currentUser object
+                  updateProfile(auth.currentUser, {
+                    displayName: username
+                  }).then(() => {
+                    navigation.replace("Login");
+                  }).catch((e) => {
+                    console.log(e);
+                  })
+                }
             } else {
                 setError('Salasanat eivät täsmää')
             }

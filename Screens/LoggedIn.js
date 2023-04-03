@@ -10,10 +10,17 @@ export default function LoggedIn() {
             console.error(e);
         }
     };
+    const user = auth.currentUser;
 
     return (
-        <View>
+        <View>{ user ? (
+            <>
+            <Text>Email:{user.email}</Text>
+            <Text>Username:{user.displayName}</Text>
+            </>
+            ) : (
             <Text></Text>
+            )}
             <Button title="Log out" onPress={logout} />
         </View>
     );
