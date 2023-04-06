@@ -38,14 +38,14 @@ export default function Signup({ navigation }) {
   return (
     <View style={styles.outer}>
       <View style={styles.inner}>
-        <Text style={styles.header}>Signup</Text>
+        <Text style={styles.header}>Rekisteröidy</Text>
 
         {error && <Text style={styles.error}>{error}</Text>}
 
         <TextInput
           value={username}
           onChangeText={setUsername}
-          placeholder="Enter username"
+          placeholder="Käyttäjänimi"
           autoCapitalize="none"
           placeholderTextColor="#aaa"
           style={styles.input}
@@ -54,7 +54,7 @@ export default function Signup({ navigation }) {
           value={email}
           onChangeText={setEmail}
           keyboardType="email-address"
-          placeholder="Enter email address"
+          placeholder="Sähköposti"
           autoCapitalize="none"
           placeholderTextColor="#aaa"
           style={styles.input}
@@ -63,7 +63,7 @@ export default function Signup({ navigation }) {
           value={password}
           onChangeText={setPassword}
           secureTextEntry
-          placeholder="Enter password"
+          placeholder="Salasana"
           autoCapitalize="none"
           placeholderTextColor="#aaa"
           style={styles.input}
@@ -72,14 +72,14 @@ export default function Signup({ navigation }) {
           value={confirmPassword}
           onChangeText={setConfirmPassword}
           secureTextEntry
-          placeholder="Confirm password"
+          placeholder="Salasana uudestaan"
           autoCapitalize="none"
           placeholderTextColor="#aaa"
           style={styles.input}
         />
 
         <Button
-          title="Create Account"
+          title="Luo käyttäjä"
           onPress={createAccount}
           disabled={!username || !email || !password || !confirmPassword}
         />

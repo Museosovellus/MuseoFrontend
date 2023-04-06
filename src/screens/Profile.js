@@ -33,7 +33,7 @@ function ProfileScreen({ navigation }) {
         </>
       ) : (
         <>
-          <Button onPress={() => navigation.navigate('Login')} title="Login" />
+          <Button onPress={() => navigation.navigate('Login')} title="Kirjaudu sisään" />
           <Button onPress={() => navigation.navigate('Signup')} title="Create account" />
         </>
       )}

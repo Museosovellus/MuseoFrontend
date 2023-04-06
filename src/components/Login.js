@@ -33,7 +33,7 @@ export default function Login({ navigation }) {
   return (
     <View style={styles.outer}>
       <View style={styles.inner}>
-        <Text style={styles.header}>Login</Text>
+        <Text style={styles.header}>Kirjaudu sisään</Text>
 
         {error && <Text style={styles.error}>{error}</Text>}
 
@@ -41,7 +41,7 @@ export default function Login({ navigation }) {
           value={email}
           onChangeText={setEmail}
           keyboardType="email-address"
-          placeholder="Enter email address"
+          placeholder="Sähköposti"
           autoCapitalize="none"
           placeholderTextColor="#aaa"
           style={styles.input}
@@ -50,12 +50,12 @@ export default function Login({ navigation }) {
           value={password}
           onChangeText={setPassword}
           secureTextEntry
-          placeholder="Enter password"
+          placeholder="Salasana"
           autoCapitalize="none"
           placeholderTextColor="#aaa"
           style={styles.input}
         />
-        <Button title="Login" onPress={loginUser} disabled={!email || !password} />
+        <Button title="Kirjaudu" onPress={loginUser} disabled={!email || !password} />
       </View>
     </View>
   );
