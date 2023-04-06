@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import { useContext, useRef } from 'react';
 import MapView, { Marker } from "react-native-maps";
 import themeContext from "../../config/themeContext";
@@ -47,8 +47,9 @@ export default function MuseoInfo({ route, navigation }) {
             coordinate={{ latitude: Number(latitude), longitude: Number(longitude) }}
           />
         </MapView>
-        {/* Ton titlen tilalle joku kiva ikoni :) */}
-        <Button title='Keskitä' onPress={centerMap} />
+        <TouchableOpacity style={styles.button} onPress={centerMap}>
+          <Ionicons name="location" size={24} color='gray' />
+        </TouchableOpacity>
       </View>
     </View>
   )
@@ -105,5 +106,9 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     backgroundColor: '#f2f5f4',
     width: 340,
+  },
+  button: {
+    alignItems: "center",
+    justifyContent: "center"
   }
 });

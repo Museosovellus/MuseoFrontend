@@ -58,7 +58,7 @@ export default function Main() {
   return (
     <Stack.Navigator>
       <Stack.Screen name='KarttaStack' component={MuseoMap} options={{ headerShown: false }} />
-      <Stack.Screen name='Museo' component={MuseoInfo} />
+      <Stack.Screen name='Museo' component={MuseoInfo} options={{ headerShown: false }} />
     </Stack.Navigator>
   )
 }
