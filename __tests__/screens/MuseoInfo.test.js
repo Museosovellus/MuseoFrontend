@@ -1,5 +1,5 @@
 import { render } from "@testing-library/react-native";
-import MuseoInfo from "../../Screens/MuseoInfo";
+import MuseoInfo from "../../src/screens/MuseoInfo";
 
 test('Renders the <MuseoInfo /> component', () => {
   const mockParams = {

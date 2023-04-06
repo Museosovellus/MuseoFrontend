@@ -10,7 +10,7 @@ import { auth } from "../components/firebaseConfig";
 const Stack = createStackNavigator();
 
 function ProfileScreen({ navigation }) {
-  const [mode, setMode] = useState(false);
+  //const [mode, setMode] = useState(false);
   const [loggedIn, setLoggedIn] = useState(false);
   const [user, setUser] = useState();
 
@@ -48,7 +48,6 @@ function ProfileScreen({ navigation }) {
   );
 }
 export default function Profile() {
-
   return (
     <Stack.Navigator>
       <Stack.Screen name="Käyttäjä" component={ProfileScreen} options={{ headerShown: false }} />
