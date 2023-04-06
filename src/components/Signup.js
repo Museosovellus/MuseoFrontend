@@ -20,7 +20,7 @@ export default function Signup({ navigation }) {
           updateProfile(auth.currentUser, {
             displayName: username
           }).then(() => {
-            navigation.navigate("Käyttäjä");
+            navigation.navigate("KäyttäjäStack");
           }).catch((e) => {
             console.log(e);
           })

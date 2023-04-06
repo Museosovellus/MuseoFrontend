@@ -31,23 +31,20 @@ export function MuseoMap({ navigation }) {
             title={marker.name}
             coordinate={{ latitude: Number(marker.latitude), longitude: Number(marker.longitude) }}
           >
-            <Callout>
+            <Callout onPress={() => {
+              navigation.navigate('Museo', {
+                index: marker.number,
+                name: marker.name,
+                city: marker.city,
+                province: marker.province,
+                latitude: Number(marker.latitude),
+                longitude: Number(marker.longitude),
+                openingHours: marker.openingHours
+              })
+            }}>
               <View>
                 <Text>{marker.name}</Text>
-                <Button
-                  title='Näytä lisätiedot'
-                  onPress={() => {
-                    navigation.navigate('Museo', {
-                      index: marker.number,
-                      name: marker.name,
-                      city: marker.city,
-                      province: marker.province,
-                      latitude: Number(marker.latitude),
-                      longitude: Number(marker.longitude),
-                      openingHours: marker.openingHours
-                    })
-                  }}
-                />
+                <Button title='Näytä lisätiedot' />
               </View>
             </Callout>
           </Marker>

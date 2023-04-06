@@ -50,7 +50,7 @@ function ProfileScreen({ navigation }) {
 export default function Profile() {
   return (
     <Stack.Navigator>
-      <Stack.Screen name="Käyttäjä" component={ProfileScreen} options={{ headerShown: false }} />
+      <Stack.Screen name="KäyttäjäStack" component={ProfileScreen} options={{ headerShown: false }} />
       <Stack.Screen name="LoginStack" component={Login} options={{ headerShown: false }} />
     </Stack.Navigator>
   );
