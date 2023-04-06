@@ -2,8 +2,7 @@ import { React, useState, useContext } from 'react';
 import { StyleSheet, Text, View, Button, useColorScheme, Switch } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import { EventRegister } from 'react-native-event-listeners';
-import themeContext from '../config/themeContext';
-import Signup from './Signup';
+import themeContext from '../../config/themeContext';
 
 export default function Home({ navigation }) {
   const theme = useContext(themeContext);
@@ -20,7 +19,7 @@ export default function Home({ navigation }) {
       <Text style={[styles.theme, { color: theme.color }]}>vaihda tummaan tilaan</Text>
 
       <Switch
-        trackColor={{false: '#767577', true: '#81b0ff'}}
+        trackColor={{ false: '#767577', true: '#81b0ff' }}
         ios_backgroundColor="#3e3e3e"
         style={{ transform: [{ scaleX: .5 }, { scaleY: .5 }] }}
         value={mode}

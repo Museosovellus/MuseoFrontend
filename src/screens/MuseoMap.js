@@ -7,7 +7,7 @@ import MuseoInfo from './MuseoInfo';
 const Stack = createNativeStackNavigator();
 
 export function MuseoMap({ navigation }) {
-  const data = require('../museums.json');
+  const data = require('../../museums.json');
 
   return (
     <View style={styles.container}>
@@ -15,10 +15,10 @@ export function MuseoMap({ navigation }) {
         testID='map'
         style={styles.map}
         initialRegion={{
-          latitude: 60.2017,
-          longitude: 24.9341,
-          latitudeDelta: 1,
-          longitudeDelta: 1
+          latitude: Number(60.2017),
+          longitude: Number(24.9341),
+          latitudeDelta: Number(1),
+          longitudeDelta: Number(1)
         }}
         showsUserLocation={true}
         showsMyLocationButton={true}
@@ -29,7 +29,7 @@ export function MuseoMap({ navigation }) {
             testID='marker'
             key={index}
             title={marker.name}
-            coordinate={{ latitude: marker.latitude, longitude: marker.longitude }}
+            coordinate={{ latitude: Number(marker.latitude), longitude: Number(marker.longitude) }}
           >
             <Callout>
               <View>
@@ -42,8 +42,8 @@ export function MuseoMap({ navigation }) {
                       name: marker.name,
                       city: marker.city,
                       province: marker.province,
-                      latitude: marker.latitude,
-                      longitude: marker.longitude,
+                      latitude: Number(marker.latitude),
+                      longitude: Number(marker.longitude),
                       openingHours: marker.openingHours
                     })
                   }}

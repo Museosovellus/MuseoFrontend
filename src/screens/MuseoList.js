@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View, Button, FlatList, TextInput, TouchableOpacity } from 'react-native';
 import { useState, useEffect, useContext } from 'react';
-import themeContext from '../config/themeContext';
+import themeContext from '../../config/themeContext';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import MuseoInfo from './MuseoInfo';
 import { Ionicons } from '@expo/vector-icons';
@@ -11,7 +11,7 @@ const Stack = createNativeStackNavigator();
 
 export function ListScreen({ navigation }) {
   const theme = useContext(themeContext);
-  const data = require('../museums.json');
+  const data = require('../../museums.json');
   const [search, setSearch] = useState('');
   const [filteredData, setFilteredData] = useState(data);
 
@@ -70,7 +70,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    alignItems: 'left',
     justifyContent: 'center',
   },
   searchbar: {

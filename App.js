@@ -4,15 +4,15 @@ import { StyleSheet, Text, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Ionicons from '@expo/vector-icons/Ionicons';
-import Home from './Screens/Home';
-import MuseoMap from './Screens/MuseoMap';
-import MuseoList from './Screens/MuseoList';
+import Home from './src/screens/Home';
+import MuseoMap from './src/screens/MuseoMap';
+import MuseoList from './src/screens/MuseoList';
 import { EventRegister } from 'react-native-event-listeners';
 import themeContext from './config/themeContext';
 import theme from './config/theme';
 import { onAuthStateChanged } from 'firebase/auth';
-import Profile from './Screens/Profile';
-import { auth } from './firebaseConfig';
+import Profile from './src/screens/Profile';
+import { auth } from './src/components/firebaseConfig';
 
 const Tab = createBottomTabNavigator();
 
