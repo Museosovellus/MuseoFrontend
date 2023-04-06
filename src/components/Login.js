@@ -1,15 +1,13 @@
 import { View, Text, Button, TextInput, StyleSheet, Alert } from "react-native";
 import React, { useState } from "react";
-import { useNavigation } from "@react-navigation/native";
 import { auth } from "./firebaseConfig";
-import {
-  onAuthStateChanged,
-  signOut,
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-} from 'firebase/auth';
+import { signInWithEmailAndPassword } from 'firebase/auth';
+import { createStackNavigator } from '@react-navigation/stack';
+import Signup from "./Signup";
 
-export default function Login({ navigation }) {
+const Stack = createStackNavigator();
+
+function LoginStack({ navigation }) {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('');
   const [error, setError] = useState(null);
@@ -18,7 +16,7 @@ export default function Login({ navigation }) {
     try {
       let res = await signInWithEmailAndPassword(auth, email, password);
       if (res && res.user) { Alert.alert("Sisäänkirjautuminen onnistui") }
-      navigation.navigate("Profile");
+      navigation.navigate("Käyttäjä");
     } catch (error) {
       if (error.code === 'auth/invalid-email' || error.code === 'auth/wrong-password') {
         setError('Virheellinen sähköposti tai salasana');
@@ -56,8 +54,18 @@ export default function Login({ navigation }) {
           style={styles.input}
         />
         <Button title="Kirjaudu" onPress={loginUser} disabled={!email || !password} />
+        <Button title="Uusi täällä? Luo käyttäjä" onPress={() => navigation.navigate('Rekisteröidy')} />
       </View>
     </View>
+  );
+}
+
+export default function Login() {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen name="Kirjaudu" component={LoginStack} />
+      <Stack.Screen name="Rekisteröidy" component={Signup} />
+    </Stack.Navigator>
   );
 }
 

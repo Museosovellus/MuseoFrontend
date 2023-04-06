@@ -15,8 +15,8 @@ export default function LoggedIn() {
   return (
     <View>{user ? (
       <>
-        <Text>Email:{user.email}</Text>
-        <Text>Username:{user.displayName}</Text>
+        <Text>Email: {user.email}</Text>
+        <Text>Username: {user.displayName}</Text>
       </>
     ) : (
       <Text></Text>

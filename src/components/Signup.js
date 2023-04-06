@@ -1,6 +1,5 @@
 import { View, Text, Button, TextInput, StyleSheet, Alert } from "react-native";
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from "firebase/auth";
-import { useNavigation } from "@react-navigation/native";
 import React, { useState } from "react";
 import { auth } from "./firebaseConfig";
 
@@ -17,11 +16,11 @@ export default function Signup({ navigation }) {
         let res = await createUserWithEmailAndPassword(auth, email, password);
         if (res && res.user) {
           Alert.alert("Käyttäjän luominen onnistui.");
-          await signInWithEmailAndPassword(auth, email, password); // Sign in the user to get the updated currentUser object
+          //await signInWithEmailAndPassword(auth, email, password);
           updateProfile(auth.currentUser, {
             displayName: username
           }).then(() => {
-            navigation.replace("Login");
+            navigation.navigate("Käyttäjä");
           }).catch((e) => {
             console.log(e);
           })
