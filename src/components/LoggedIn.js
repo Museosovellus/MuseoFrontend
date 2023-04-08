@@ -2,7 +2,8 @@ import { signOut } from "firebase/auth";
 import { View, Text, Button } from "react-native";
 import { auth } from "./firebaseConfig";
 
-export default function LoggedIn() {
+export default function LoggedIn({ onFavoritePress, onVisitPress }) {
+
   const logout = async () => {
     try {
       await signOut(auth);
@@ -13,14 +14,17 @@ export default function LoggedIn() {
   const user = auth.currentUser;
 
   return (
-    <View>{user ? (
-      <>
-        <Text>Email: {user.email}</Text>
-        <Text>Username: {user.displayName}</Text>
-      </>
-    ) : (
-      <Text></Text>
-    )}
+    <View>
+      {user ? (
+        <>
+          <Text>Email: {user.email}</Text>
+          <Text>Username: {user.displayName}</Text>
+        </>
+      ) : (
+        <Text></Text>
+      )}
+      <Button title="Suosikit" onPress={onFavoritePress} />
+      <Button title="Haluan käydä" onPress={onVisitPress} />
       <Button title="Log out" onPress={logout} />
     </View>
   );

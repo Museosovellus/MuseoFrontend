@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { View, Button, StyleSheet, Switch, Text } from 'react-native';
-import { EventRegister } from 'react-native-event-listeners';
 import Login from '../components/Login';
 import LoggedIn from '../components/LoggedIn';
+import Favorites from '../screens/Favorites';
+import Tovisit from './Tovisit';
 import { createStackNavigator } from '@react-navigation/stack';
 import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from "../components/firebaseConfig";
@@ -27,7 +28,8 @@ function ProfileScreen({ navigation }) {
     <View style={styles.container}>
       {loggedIn ? (
         <>
-          <LoggedIn user={user} />
+          <LoggedIn navigation={navigation} onFavoritePress={() => navigation.navigate('Suosikit')}
+          onVisitPress={() => navigation.navigate('Kiinnostus')} />
         </>
       ) : (
         <>
@@ -52,6 +54,8 @@ export default function Profile() {
     <Stack.Navigator>
       <Stack.Screen name="KäyttäjäStack" component={ProfileScreen} options={{ headerShown: false }} />
       <Stack.Screen name="LoginStack" component={Login} options={{ headerShown: false }} />
+      <Stack.Screen name="Suosikit" component={Favorites} />
+      <Stack.Screen name="Kiinnostus" component={Tovisit} />
     </Stack.Navigator>
   );
 }

@@ -27,6 +27,22 @@ function ListScreen({ navigation }) {
     setSearch(text);
   }
 
+  const handleToVisitButtonPress = (item) => {
+    const currentUser = auth.currentUser;
+    const db = getDatabase();
+    const toVisitRef = ref(db, `users/${currentUser.uid}/tovisit`);
+    const newToVisit = {
+      number: item.number,
+      name: item.name,
+      city: item.city,
+      province: item.province,
+      latitude: item.latitude,
+      longitude: item.longitude,
+      openingHours: item.openingHours
+    };
+    push(toVisitRef, newToVisit);
+  };
+
   const handleFavoriteButtonPress = (item) => {
     const currentUser = auth.currentUser;
     const db = getDatabase();
@@ -69,7 +85,7 @@ function ListScreen({ navigation }) {
             <Text style={styles.item}>{item.name}</Text>
             <Text style={styles.city}><Ionicons name="location-sharp" /> {item.city}</Text>
             <View style={styles.buttonRow}>
-              <TouchableOpacity style={styles.toVisitButton}>
+              <TouchableOpacity style={styles.toVisitButton} onPress={() => handleToVisitButtonPress(item)}>
                 <Ionicons name="star-outline" size={24} color="#333" />
               </TouchableOpacity>
               <TouchableOpacity style={styles.favoriteButton} onPress={() => handleFavoriteButtonPress(item)}>
