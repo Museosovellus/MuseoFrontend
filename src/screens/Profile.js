@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { View, Button, StyleSheet, Switch, Text } from 'react-native';
 import Login from '../components/Login';
 import LoggedIn from '../components/LoggedIn';
-import Favorites from '../screens/Favorites';
+import Visited from './Visited';
 import Tovisit from './Tovisit';
 import { createStackNavigator } from '@react-navigation/stack';
 import { onAuthStateChanged } from 'firebase/auth';
@@ -28,7 +28,7 @@ function ProfileScreen({ navigation }) {
     <View style={styles.container}>
       {loggedIn ? (
         <>
-          <LoggedIn navigation={navigation} onFavoritePress={() => navigation.navigate('Suosikit')}
+          <LoggedIn navigation={navigation} onVisitedPress={() => navigation.navigate('Käydyt')}
           onVisitPress={() => navigation.navigate('Kiinnostus')} />
         </>
       ) : (
@@ -54,8 +54,8 @@ export default function Profile() {
     <Stack.Navigator>
       <Stack.Screen name="KäyttäjäStack" component={ProfileScreen} options={{ headerShown: false }} />
       <Stack.Screen name="LoginStack" component={Login} options={{ headerShown: false }} />
-      <Stack.Screen name="Suosikit" component={Favorites} />
-      <Stack.Screen name="Kiinnostus" component={Tovisit} />
+      <Stack.Screen name="Käydyt" component={Visited} options={{headerTitle: "Käydyt museot"}}/>
+      <Stack.Screen name="Kiinnostus" component={Tovisit} options={{headerTitle: "Kiinnostuksen kohteet"}} />
     </Stack.Navigator>
   );
 }

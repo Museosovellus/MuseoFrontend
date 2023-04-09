@@ -2,7 +2,7 @@ import { signOut } from "firebase/auth";
 import { View, Text, Button } from "react-native";
 import { auth } from "./firebaseConfig";
 
-export default function LoggedIn({ onFavoritePress, onVisitPress }) {
+export default function LoggedIn({ onVisitedPress, onVisitPress }) {
 
   const logout = async () => {
     try {
@@ -23,7 +23,7 @@ export default function LoggedIn({ onFavoritePress, onVisitPress }) {
       ) : (
         <Text></Text>
       )}
-      <Button title="Suosikit" onPress={onFavoritePress} />
+      <Button title="Käydyt museot" onPress={onVisitedPress} />
       <Button title="Haluan käydä" onPress={onVisitPress} />
       <Button title="Log out" onPress={logout} />
     </View>

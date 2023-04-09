@@ -1,12 +1,12 @@
 import React from 'react';
-import { StyleSheet, Text, View, FlatList, TextInput, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, FlatList, TextInput, TouchableOpacity, Alert } from 'react-native';
 import { useState, useContext } from 'react';
 import themeContext from '../../config/themeContext';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import MuseoInfo from './MuseoInfo';
 import { Ionicons } from '@expo/vector-icons';
 import { auth } from '../components/firebaseConfig';
-import { getDatabase, ref, push } from '@firebase/database';
+import { getDatabase, ref, push, onValue, query, orderByChild, equalTo, get } from '@firebase/database';
 
 const Stack = createNativeStackNavigator();
 
@@ -40,14 +40,22 @@ function ListScreen({ navigation }) {
       longitude: item.longitude,
       openingHours: item.openingHours
     };
-    push(toVisitRef, newToVisit);
+
+    const museumAlreadyToVisit = query(toVisitRef, orderByChild('name'), equalTo(item.name));
+    get(museumAlreadyToVisit).then((snapshot) => {
+      if (snapshot.exists()) {
+        Alert.alert('Olet jo lisännyt tämän museon!');
+      } else {
+        push(toVisitRef, newToVisit);
+      }
+    });
   };
 
-  const handleFavoriteButtonPress = (item) => {
+  const handleVisitedButtonPress = (item) => {
     const currentUser = auth.currentUser;
     const db = getDatabase();
-    const favoritesRef = ref(db, `users/${currentUser.uid}/favorites`);
-    const newFavorite = {
+    const visitedRef = ref(db, `users/${currentUser.uid}/visited`);
+    const newVisited = {
       number: item.number,
       name: item.name,
       city: item.city,
@@ -56,7 +64,15 @@ function ListScreen({ navigation }) {
       longitude: item.longitude,
       openingHours: item.openingHours
     };
-    push(favoritesRef, newFavorite);
+
+    const museumAlreadyInDatabaseRef = query(visitedRef, orderByChild('name'), equalTo(item.name));
+    get(museumAlreadyInDatabaseRef).then((snapshot) => {
+      if (snapshot.exists()) {
+        Alert.alert('Olet jo lisännyt tämän museon!');
+      } else {
+        push(visitedRef, newVisited);
+      }
+    });
   };
 
   return (
@@ -88,7 +104,7 @@ function ListScreen({ navigation }) {
               <TouchableOpacity style={styles.toVisitButton} onPress={() => handleToVisitButtonPress(item)}>
                 <Ionicons name="star-outline" size={24} color="#333" />
               </TouchableOpacity>
-              <TouchableOpacity style={styles.favoriteButton} onPress={() => handleFavoriteButtonPress(item)}>
+              <TouchableOpacity style={styles.visitedButton} onPress={() => handleVisitedButtonPress(item)}>
                 <Ionicons name="heart-outline" size={24} color="#333" />
               </TouchableOpacity>
             </View>
@@ -152,7 +168,14 @@ const styles = StyleSheet.create({
     backgroundColor: '#f2f5f4',
     width: 340,
   },
-  favoriteButton: {
+  buttonRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginTop: 10,
+    marginLeft: 20,
+    marginRight: 20,
+  },
+  visitedButton: {
     padding: 5,
     borderRadius: 10,
     backgroundColor: '#eee',
@@ -163,5 +186,6 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     backgroundColor: '#eee',
     alignSelf: 'flex-end',
+    marginLeft: 185,
   },
 });

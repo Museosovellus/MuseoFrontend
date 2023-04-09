@@ -9,36 +9,36 @@ import MuseoInfo from './MuseoInfo';
 
 const Stack = createNativeStackNavigator();
 
-function Favorites({ navigation }) {
+function Visited({ navigation }) {
   const theme = useContext(themeContext);
-  const [favorites, setFavorites] = useState([]);
+  const [visited, setVisited] = useState([]);
 
   useEffect(() => {
     const currentUser = auth.currentUser;
     const db = getDatabase();
-    const favoritesRef = ref(db, `users/${currentUser.uid}/favorites`);
-    const unsubscribe = onValue(favoritesRef, (snapshot) => {
-      const favoritesData = snapshot.val() || [];
-      const favoritesList = Object.keys(favoritesData).map((key) => ({
+    const visitedRef = ref(db, `users/${currentUser.uid}/visited`);
+    const unsubscribe = onValue(visitedRef, (snapshot) => {
+      const visitedData = snapshot.val() || [];
+      const visitedList = Object.keys(visitedData).map((key) => ({
         id: key,
-        ...favoritesData[key],
+        ...visitedData[key],
       }));
-      setFavorites(favoritesList);
+      setVisited(visitedList);
     });
     return () => {
       unsubscribe();
     };
   }, []);
 
-  const handleRemoveFavorite = (id) => {
+  const handleRemoveVisited = (id) => {
     const currentUser = auth.currentUser;
     const db = getDatabase();
-    const favoritesRef = ref(db, `users/${currentUser.uid}/favorites/${id}`);
-    remove(favoritesRef);
-    setFavorites(favorites.filter((item) => item.id !== id));
+    const visitedRef = ref(db, `users/${currentUser.uid}/visited/${id}`);
+    remove(visitedRef);
+    setVisited(visited.filter((item) => item.id !== id));
   };
 
-  const renderFavorite = ({ item }) => (
+  const renderVisited = ({ item }) => (
     <TouchableOpacity
       style={styles.box}
       onPress={() =>
@@ -59,7 +59,7 @@ function Favorites({ navigation }) {
       <View style={styles.buttonRow}>
         <TouchableOpacity
           style={styles.removeButton}
-          onPress={() => handleRemoveFavorite(item.id)}>
+          onPress={() => handleRemoveVisited(item.id)}>
           <Ionicons name="close-circle-outline" size={24} color="#333" />
         </TouchableOpacity>
       </View>
@@ -69,13 +69,13 @@ function Favorites({ navigation }) {
   return (
     <View style={[styles.container, { backgroundColor: theme.background }]}>
       <FlatList
-        data={favorites}
-        renderItem={renderFavorite}
+        data={visited}
+        renderItem={renderVisited}
         keyExtractor={(item) => item.id}
         contentContainerStyle={styles.flatList}
         ListEmptyComponent={
           <Text style={styles.emptyList}>
-            Paina Museot -sivulla "<Ionicons name="heart-outline" size={16} />" lisätäksesi museoita suosikkeihin
+            Paina Museot -sivulla "<Ionicons name="heart-outline" size={16} />" lisätäksesi museoita joissa olet käynyt
           </Text>
         }
       />
@@ -86,7 +86,7 @@ function Favorites({ navigation }) {
 export default function MuseoList() {
   return (
     <Stack.Navigator>
-      <Stack.Screen name='Favorites' component={Favorites} options={{ headerShown: false }} />
+      <Stack.Screen name='Visited' component={Visited} options={{ headerShown: false }} />
       <Stack.Screen name='Museo' component={MuseoInfo} options={{ headerShown: false }} />
     </Stack.Navigator>
   );

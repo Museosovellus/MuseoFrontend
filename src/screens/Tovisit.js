@@ -38,7 +38,7 @@ function Tovisit({ navigation }) {
     setToVisit(toVisit.filter((item) => item.id !== id));
   };
 
-  const renderVisited = ({ item }) => (
+  const renderToVisit = ({ item }) => (
     <TouchableOpacity
       style={styles.box}
       onPress={() =>
@@ -70,12 +70,12 @@ function Tovisit({ navigation }) {
     <View style={[styles.container, { backgroundColor: theme.background }]}>
       <FlatList
         data={toVisit}
-        renderItem={renderVisited}
+        renderItem={renderToVisit}
         keyExtractor={(item) => item.id}
         contentContainerStyle={styles.flatList}
         ListEmptyComponent={
           <Text style={styles.emptyList}>
-            Paina Museot -sivulla "<Ionicons name="star-outline" size={16} />" lisätäksesi museoita
+            Paina Museot -sivulla "<Ionicons name="star-outline" size={16} />" lisätäksesi museoita joissa haluat käydä
           </Text>
         }
       />
