@@ -4,8 +4,12 @@ import { getDatabase, ref, onValue, remove } from '@firebase/database';
 import { auth } from '../components/firebaseConfig';
 import themeContext from '../../config/themeContext';
 import { Ionicons } from '@expo/vector-icons';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import MuseoInfo from './MuseoInfo';
 
-export default function Tovisit() {
+const Stack = createNativeStackNavigator();
+
+function Tovisit({ navigation }) {
   const theme = useContext(themeContext);
   const [toVisit, setToVisit] = useState([]);
 
@@ -76,6 +80,15 @@ export default function Tovisit() {
         }
       />
     </View>
+  );
+}
+
+export default function MuseoList() {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen name="Tovisit" component={Tovisit} options={{ headerShown: false }} />
+      <Stack.Screen name="Museo" component={MuseoInfo} options={{ headerShown: false }} />
+    </Stack.Navigator>
   );
 }
 
