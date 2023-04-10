@@ -1,12 +1,12 @@
-import React from 'react';
 import { StyleSheet, Text, View, FlatList, TextInput, TouchableOpacity, Alert } from 'react-native';
-import { useState, useContext } from 'react';
+import { useState, useContext, useEffect } from 'react';
 import themeContext from '../../config/themeContext';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import MuseoInfo from './MuseoInfo';
 import { Ionicons } from '@expo/vector-icons';
 import { auth } from '../components/firebaseConfig';
-import { getDatabase, ref, push, onValue, query, orderByChild, equalTo, get } from '@firebase/database';
+import { onAuthStateChanged } from 'firebase/auth';
+import { getDatabase, ref, push, query, orderByChild, equalTo, get } from '@firebase/database';
 
 const Stack = createNativeStackNavigator();
 
@@ -15,6 +15,17 @@ function ListScreen({ navigation }) {
   const data = require('../../museums.json');
   const [search, setSearch] = useState('');
   const [filteredData, setFilteredData] = useState(data);
+  const [loggedIn, setLoggedIn] = useState(false);
+  const [user, setUser] = useState({});
+
+  useEffect(() => {
+    const subscriber = onAuthStateChanged(auth, (user) => {
+      console.log('user', JSON.stringify(user));
+      setUser(user);
+      if (user) { setLoggedIn(true) } else { setLoggedIn(false) }
+    });
+    return subscriber;
+  }, []);
 
   const searchFunction = (text) => {
     const newData = data.filter((item) => {
@@ -100,14 +111,16 @@ function ListScreen({ navigation }) {
               })}>
             <Text style={styles.item}>{item.name}</Text>
             <Text style={styles.city}><Ionicons name="location-sharp" /> {item.city}</Text>
-            <View style={styles.buttonRow}>
-              <TouchableOpacity style={styles.toVisitButton} onPress={() => handleToVisitButtonPress(item)}>
-                <Ionicons name="star-outline" size={24} color="#333" />
-              </TouchableOpacity>
-              <TouchableOpacity style={styles.visitedButton} onPress={() => handleVisitedButtonPress(item)}>
-                <Ionicons name="heart-outline" size={24} color="#333" />
-              </TouchableOpacity>
-            </View>
+            {loggedIn ? (
+              <View style={styles.buttonRow}>
+                <TouchableOpacity style={styles.toVisitButton} onPress={() => handleToVisitButtonPress(item)}>
+                  <Ionicons name="star-outline" size={24} color="#333" />
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.visitedButton} onPress={() => handleVisitedButtonPress(item)}>
+                  <Ionicons name="heart-outline" size={24} color="#333" />
+                </TouchableOpacity>
+              </View>
+            ) : (<></>)}
           </TouchableOpacity>}
       />
     </View>
@@ -127,7 +140,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    alignItems: 'left',
     justifyContent: 'center',
   },
   searchbar: {
