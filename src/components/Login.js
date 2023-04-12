@@ -7,7 +7,7 @@ import Signup from "./Signup";
 
 const Stack = createStackNavigator();
 
-function LoginStack({ navigation }) {
+export function LoginStack({ navigation }) {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('');
   const [error, setError] = useState(null);

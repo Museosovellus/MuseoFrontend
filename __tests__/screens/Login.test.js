@@ -1,6 +1,11 @@
 import { render } from "@testing-library/react-native";
-import Login from '../../src/components/Login';
+import LoginStack from '../../src/components/Login';
+import { NavigationContainer } from "@react-navigation/native";
 
-test('Renders the <Login /> component', () => {
-  render(<Login />);
+test('Renders the <LoginStack /> component', () => {
+  render(
+    <NavigationContainer>
+      <LoginStack />
+    </NavigationContainer>
+  );
 });

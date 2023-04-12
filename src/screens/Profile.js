@@ -10,7 +10,7 @@ import { auth } from "../components/firebaseConfig";
 
 const Stack = createStackNavigator();
 
-function ProfileScreen({ navigation }) {
+export function ProfileScreen({ navigation }) {
   //const [mode, setMode] = useState(false);
   const [loggedIn, setLoggedIn] = useState(false);
   const [user, setUser] = useState();
@@ -29,7 +29,7 @@ function ProfileScreen({ navigation }) {
       {loggedIn ? (
         <>
           <LoggedIn navigation={navigation} onVisitedPress={() => navigation.navigate('Käydyt')}
-          onVisitPress={() => navigation.navigate('Kiinnostus')} />
+            onVisitPress={() => navigation.navigate('Kiinnostus')} />
         </>
       ) : (
         <>
@@ -54,8 +54,8 @@ export default function Profile() {
     <Stack.Navigator>
       <Stack.Screen name="KäyttäjäStack" component={ProfileScreen} options={{ headerShown: false }} />
       <Stack.Screen name="LoginStack" component={Login} options={{ headerShown: false }} />
-      <Stack.Screen name="Käydyt" component={Visited} options={{headerTitle: "Käydyt museot"}}/>
-      <Stack.Screen name="Kiinnostus" component={Tovisit} options={{headerTitle: "Kiinnostuksen kohteet"}} />
+      <Stack.Screen name="Käydyt" component={Visited} options={{ headerTitle: "Käydyt museot" }} />
+      <Stack.Screen name="Kiinnostus" component={Tovisit} options={{ headerTitle: "Kiinnostuksen kohteet" }} />
     </Stack.Navigator>
   );
 }

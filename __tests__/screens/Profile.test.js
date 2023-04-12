@@ -1,6 +1,11 @@
 import { render } from "@testing-library/react-native";
-import Profile from '../../src/screens/Profile';
+import ProfileScreen from '../../src/screens/Profile';
+import { NavigationContainer } from "@react-navigation/native";
 
-test('Renders the <Profile /> component', () => {
-  render(<Profile />);
+test('Renders the <ProfileScreen /> component', () => {
+  render(
+    <NavigationContainer>
+      <ProfileScreen />
+    </NavigationContainer>
+  );
 });
