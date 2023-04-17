@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, FlatList, TextInput, TouchableOpacity, Alert } from 'react-native';
+import { Text, View, FlatList, TextInput, TouchableOpacity, Alert, Image } from 'react-native';
 import { useState, useContext, useEffect } from 'react';
 import themeContext from '../../config/themeContext';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -7,6 +7,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { auth } from '../components/firebaseConfig';
 import { onAuthStateChanged } from 'firebase/auth';
 import { getDatabase, ref, push, query, orderByChild, equalTo, get } from '@firebase/database';
+import styles from '../../Styles';
 
 const Stack = createNativeStackNavigator();
 
@@ -49,7 +50,8 @@ export function ListScreen({ navigation }) {
       province: item.province,
       latitude: item.latitude,
       longitude: item.longitude,
-      openingHours: item.openingHours
+      openingHours: item.openingHours,
+      url: item.url
     };
 
     const museumAlreadyToVisit = query(toVisitRef, orderByChild('name'), equalTo(item.name));
@@ -73,7 +75,8 @@ export function ListScreen({ navigation }) {
       province: item.province,
       latitude: item.latitude,
       longitude: item.longitude,
-      openingHours: item.openingHours
+      openingHours: item.openingHours,
+      url: item.url
     };
 
     const museumAlreadyInDatabaseRef = query(visitedRef, orderByChild('name'), equalTo(item.name));
@@ -87,7 +90,7 @@ export function ListScreen({ navigation }) {
   };
 
   return (
-    <View style={[styles.container, { backgroundColor: theme.background }]}>
+    <View style={styles.container}>
       <TextInput
         onChangeText={searchFunction}
         value={search}
@@ -107,8 +110,10 @@ export function ListScreen({ navigation }) {
                 province: item.province,
                 latitude: item.latitude,
                 longitude: item.longitude,
-                openingHours: item.openingHours
+                openingHours: item.openingHours,
+                url: item.url
               })}>
+            <Image source={require('../../pic.jpg')} style={styles.listImage} />
             <Text style={styles.item}>{item.name}</Text>
             <Text style={styles.city}><Ionicons name="location-sharp" /> {item.city}</Text>
             {loggedIn ? (
@@ -134,70 +139,4 @@ export default function MuseoList() {
       <Stack.Screen name='Museo' component={MuseoInfo} options={{ headerShown: false }} />
     </Stack.Navigator>
   );
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    justifyContent: 'center',
-  },
-  searchbar: {
-    borderColor: '#c4c4c4',
-    borderWidth: 1,
-    margin: 20,
-    marginTop: 50,
-    padding: 10,
-    backgroundColor: '#fafafa',
-    width: '90%'
-  },
-  item: {
-    marginTop: 10,
-    marginLeft: 20,
-    marginRight: 20,
-    marginBottom: 7,
-    fontSize: 20,
-    fontWeight: 'bold',
-    color: '#05968f',
-  },
-  city: {
-    marginTop: 10,
-    marginLeft: 30,
-    marginRight: 20,
-    fontSize: 10,
-    fontWeight: 'normal',
-    color: 'grey',
-    textTransform: 'uppercase',
-  },
-  box: {
-    marginTop: 10,
-    marginBottom: 10,
-    margin: 25,
-    padding: 20,
-    paddingBottom: 30,
-    borderColor: '#e9f0ef',
-    borderWidth: 1,
-    backgroundColor: '#f2f5f4',
-    width: 340,
-  },
-  buttonRow: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    marginTop: 10,
-    marginLeft: 20,
-    marginRight: 20,
-  },
-  visitedButton: {
-    padding: 5,
-    borderRadius: 10,
-    backgroundColor: '#eee',
-    alignSelf: 'flex-end',
-  },
-  toVisitButton: {
-    padding: 5,
-    borderRadius: 10,
-    backgroundColor: '#eee',
-    alignSelf: 'flex-end',
-    marginLeft: 185,
-  },
-});
+};

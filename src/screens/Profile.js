@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Button, StyleSheet, Switch, Text } from 'react-native';
+import { View, Button, Switch, Text } from 'react-native';
 import Login from '../components/Login';
 import LoggedIn from '../components/LoggedIn';
 import Visited from './Visited';
@@ -7,6 +7,7 @@ import Tovisit from './Tovisit';
 import { createStackNavigator } from '@react-navigation/stack';
 import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from "../components/firebaseConfig";
+import styles from '../../Styles';
 
 const Stack = createStackNavigator();
 
@@ -58,12 +59,4 @@ export default function Profile() {
       <Stack.Screen name="Kiinnostus" component={Tovisit} options={{ headerTitle: "Kiinnostuksen kohteet" }} />
     </Stack.Navigator>
   );
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center'
-  }
-})
+};

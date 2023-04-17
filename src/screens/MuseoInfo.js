@@ -5,11 +5,13 @@ import MapView, { Marker } from "react-native-maps";
 import themeContext from "../../config/themeContext";
 import { Ionicons } from '@expo/vector-icons';
 import { Button } from "react-native-paper";
+import styles from '../../Styles';
+import * as Linking from 'expo-linking';
 
 export default function MuseoInfo({ route, navigation }) {
 
   const theme = useContext(themeContext);
-  const { name, city, province, latitude, longitude, openingHours, index } = route.params;
+  const { name, city, province, latitude, longitude, openingHours, url, index } = route.params;
   const mapRef = useRef(null);
   const initialRegion = {
     latitude: Number(latitude),
@@ -23,15 +25,10 @@ export default function MuseoInfo({ route, navigation }) {
   }
 
   return (
-    <View style={[styles.container, { backgroundColor: theme.background }]}>
-      <View style={styles.box}>
-        <Text style={styles.title}>{name}</Text>
-        <Text style={styles.city}><Ionicons name="location-sharp" /> {city}, {province}</Text>
-        <Text style={styles.hours}>{openingHours}</Text>
-        {/* TODO: Tarkemmat aukioloajat ja linkki museon nettisivulle. */}
-        <MapView
+    <View style={styles.container}>
+         <MapView
           ref={mapRef}
-          style={styles.map}
+          style={styles.mapStyle}
           initialRegion={{
             latitude: Number(latitude),
             longitude: Number(longitude),
@@ -47,68 +44,16 @@ export default function MuseoInfo({ route, navigation }) {
             coordinate={{ latitude: Number(latitude), longitude: Number(longitude) }}
           />
         </MapView>
-        <TouchableOpacity style={styles.button} onPress={centerMap}>
+{/*         <TouchableOpacity style={styles.centeringButton} onPress={centerMap}>
           <Ionicons name="location" size={24} color='gray' />
-        </TouchableOpacity>
+        </TouchableOpacity> */}
+      <View style={styles.info}>
+        <Text style={styles.title}>{name}</Text>
+        <Text style={styles.location}><Ionicons name="location-sharp" /> {city}, {province}</Text>
+        <Text style={styles.hours}>{openingHours}</Text>
+
+        <Button title="Avaa tästä museon oma verkkosivu" onPress={() => Linking.openURL(url)} />
       </View>
     </View>
   )
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  map: {
-    width: 280,
-    marginTop: 50,
-    height: 280,
-    borderWidth: 3,
-    borderColor: '#05968f',
-    borderRadius: 140,
-  },
-  title: {
-    marginTop: 10,
-    marginLeft: 20,
-    marginRight: 20,
-    marginBottom: 7,
-    fontSize: 30,
-    fontWeight: 'bold',
-    color: '#05968f',
-  },
-  city: {
-    marginTop: 10,
-    marginLeft: 30,
-    marginRight: 20,
-    fontSize: 15,
-    fontWeight: 'normal',
-    color: 'grey',
-    textTransform: 'uppercase',
-  },
-  hours: {
-    marginTop: 30,
-    marginLeft: 30,
-    marginRight: 20,
-    fontSize: 20,
-    fontWeight: 'normal',
-    color: 'black',
-  },
-  box: {
-    marginTop: 10,
-    marginBottom: 10,
-    margin: 25,
-    padding: 20,
-    paddingBottom: 30,
-    borderColor: '#e9f0ef',
-    borderWidth: 1,
-    backgroundColor: '#f2f5f4',
-    width: 340,
-  },
-  button: {
-    alignItems: "center",
-    justifyContent: "center"
-  }
-});
+};

@@ -1,8 +1,9 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { StyleSheet, View, Button, Text } from 'react-native';
+import { View, Button, Text } from 'react-native';
 import MapView, { Marker, Callout } from 'react-native-maps';
 import MuseoInfo from './MuseoInfo';
+import styles from '../../Styles';
 
 const Stack = createNativeStackNavigator();
 
@@ -61,14 +62,4 @@ export default function Main() {
       <Stack.Screen name='Museo' component={MuseoInfo} options={{ headerShown: false }} />
     </Stack.Navigator>
   )
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1
-  },
-  map: {
-    ...StyleSheet.absoluteFillObject,
-    width: '100%',
-  },
-});
+};

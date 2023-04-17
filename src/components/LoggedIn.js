@@ -1,5 +1,6 @@
 import { signOut } from "firebase/auth";
 import { View, Text, Button } from "react-native";
+import styles from "../../Styles";
 import { auth } from "./firebaseConfig";
 
 export default function LoggedIn({ onVisitedPress, onVisitPress }) {
@@ -17,8 +18,9 @@ export default function LoggedIn({ onVisitedPress, onVisitPress }) {
     <View>
       {user ? (
         <>
-          <Text>Email: {user.email}</Text>
-          <Text>Username: {user.displayName}</Text>
+          <Text style={styles.profileName}>Hei {user.displayName}!</Text>
+
+          <Text>{user.email}</Text>
         </>
       ) : (
         <Text></Text>

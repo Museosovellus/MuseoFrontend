@@ -54,7 +54,7 @@ export default function App() {
               iconName = focused ? 'list' : 'list-outline';
             } else if (route.name === 'Kartta') {
               iconName = focused ? 'location' : 'location-outline';
-            } else if (route.name === 'Käyttäjä') {
+            } else if (route.name === 'Profiili') {
               iconName = focused ? 'ios-person' : 'ios-person-outline'
             }
 
@@ -64,9 +64,9 @@ export default function App() {
           tabBarInactiveTintColor: 'gray',
         })}>
           <Tab.Screen name="Etusivu" component={Home} options={{ headerShown: false }} />
-          <Tab.Screen name="Museot" component={MuseoList} options={{ headerShown: false }} />
+          <Tab.Screen name="Museot" component={MuseoList} options={{ headerShown: true }} />
           <Tab.Screen name="Kartta" component={MuseoMap} options={{ headerShown: false }} />
-          <Tab.Screen name="Käyttäjä" component={Profile} options={{ headerShown: false }} />
+          <Tab.Screen name="Profiili" component={Profile} options={{ headerShown: false }} />
         </Tab.Navigator>
       </NavigationContainer>
     </themeContext.Provider>
