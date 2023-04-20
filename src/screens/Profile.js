@@ -13,21 +13,19 @@ const Stack = createStackNavigator();
 
 export function ProfileScreen({ navigation }) {
   //const [mode, setMode] = useState(false);
-  const [loggedIn, setLoggedIn] = useState(false);
   const [user, setUser] = useState();
 
   useEffect(() => {
     const subscriber = onAuthStateChanged(auth, (user) => {
       console.log("user", JSON.stringify(user));
       setUser(user);
-      if (user) { setLoggedIn(true) } else { setLoggedIn(false) }
     });
     return subscriber;
   }, []);
 
   return (
     <View style={styles.container}>
-      {loggedIn ? (
+      {user ? (
         <>
           <LoggedIn navigation={navigation} onVisitedPress={() => navigation.navigate('Käydyt')}
             onVisitPress={() => navigation.navigate('Kiinnostus')} />
