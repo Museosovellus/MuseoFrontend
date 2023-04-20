@@ -8,6 +8,7 @@ import { auth } from '../components/firebaseConfig';
 import { onAuthStateChanged } from 'firebase/auth';
 import { getDatabase, ref, push, query, orderByChild, equalTo, get } from '@firebase/database';
 import styles from '../../Styles';
+import { faker } from '@faker-js/faker';
 
 const Stack = createNativeStackNavigator();
 
@@ -16,14 +17,12 @@ export function ListScreen({ navigation }) {
   const data = require('../../museums.json');
   const [search, setSearch] = useState('');
   const [filteredData, setFilteredData] = useState(data);
-  const [loggedIn, setLoggedIn] = useState(false);
   const [user, setUser] = useState({});
 
   useEffect(() => {
     const subscriber = onAuthStateChanged(auth, (user) => {
       console.log('user', JSON.stringify(user));
       setUser(user);
-      if (user) { setLoggedIn(true) } else { setLoggedIn(false) }
     });
     return subscriber;
   }, []);
@@ -89,6 +88,10 @@ export function ListScreen({ navigation }) {
     });
   };
 
+  const generateImage = () => {
+    faker.image.city(640, 480, false);
+  };
+
   return (
     <View style={styles.container}>
       <TextInput
@@ -99,6 +102,7 @@ export function ListScreen({ navigation }) {
       />
       <FlatList
         data={filteredData}
+        keyExtractor={(item, index) => index.toString()}
         renderItem={({ item }) =>
           <TouchableOpacity
             style={styles.box}
@@ -113,10 +117,10 @@ export function ListScreen({ navigation }) {
                 openingHours: item.openingHours,
                 url: item.url
               })}>
-            <Image source={require('../../pic.jpg')} style={styles.listImage} />
+            <Image source={{ uri: faker.image.city(640, 400, false) }} style={styles.listImage} />
             <Text style={styles.item}>{item.name}</Text>
             <Text style={styles.city}><Ionicons name="location-sharp" /> {item.city}</Text>
-            {loggedIn ? (
+            {user ? (
               <View style={styles.buttonRow}>
                 <TouchableOpacity style={styles.toVisitButton} onPress={() => handleToVisitButtonPress(item)}>
                   <Ionicons name="star-outline" size={24} color="#333" />
