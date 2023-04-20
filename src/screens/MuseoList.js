@@ -1,5 +1,5 @@
 import { Text, View, FlatList, TextInput, TouchableOpacity, Alert, Image } from 'react-native';
-import { useState, useContext, useEffect } from 'react';
+import { useState, useContext, useEffect, useRef } from 'react';
 import themeContext from '../../config/themeContext';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import MuseoInfo from './MuseoInfo';
@@ -18,6 +18,10 @@ export function ListScreen({ navigation }) {
   const [search, setSearch] = useState('');
   const [filteredData, setFilteredData] = useState(data);
   const [user, setUser] = useState({});
+
+  const listRef = useRef(null);
+  const [contentVerticalOffset, setContentVerticalOffset] = useState(0);
+  const CONTENT_OFFSET_THRESHOLD = 300;
 
   useEffect(() => {
     const subscriber = onAuthStateChanged(auth, (user) => {
@@ -88,10 +92,6 @@ export function ListScreen({ navigation }) {
     });
   };
 
-  const generateImage = () => {
-    faker.image.city(640, 480, false);
-  };
-
   return (
     <View style={styles.container}>
       <TextInput
@@ -102,7 +102,10 @@ export function ListScreen({ navigation }) {
       />
       <FlatList
         data={filteredData}
-        keyExtractor={(item, index) => index.toString()}
+        ref={listRef}
+        onScroll={event => {
+          setContentVerticalOffset(event.nativeEvent.contentOffset.y);
+        }}
         renderItem={({ item }) =>
           <TouchableOpacity
             style={styles.box}
@@ -132,6 +135,14 @@ export function ListScreen({ navigation }) {
             ) : (<></>)}
           </TouchableOpacity>}
       />
+      {contentVerticalOffset > CONTENT_OFFSET_THRESHOLD && (
+      <Ionicons 
+      name='arrow-up-circle' style={styles.scrollTopButton}
+      onPress={() => {
+        listRef.current.scrollToOffset({ offset: 0, animated: true });
+      }}
+      />
+      )}
     </View>
   );
 }

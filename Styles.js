@@ -173,4 +173,12 @@ export default StyleSheet.create({
         color: '#05968f',
         textAlign: 'center',
       },
+
+      scrollTopButton: {
+        position: 'absolute',
+        bottom: 0,
+        right: 0,
+        fontSize: 50,
+        color: '#05968f'
+      },
     });
