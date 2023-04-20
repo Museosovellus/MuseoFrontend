@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { View, Button, Switch, Text } from 'react-native';
-import Login from '../components/Login';
 import LoggedIn from '../components/LoggedIn';
 import Visited from './Visited';
 import Tovisit from './Tovisit';
@@ -25,16 +24,9 @@ export function ProfileScreen({ navigation }) {
 
   return (
     <View style={styles.container}>
-      {user ? (
-        <>
-          <LoggedIn navigation={navigation} onVisitedPress={() => navigation.navigate('Käydyt')}
-            onVisitPress={() => navigation.navigate('Kiinnostus')} />
-        </>
-      ) : (
-        <>
-          <Button onPress={() => navigation.navigate('LoginStack')} title="Kirjaudu sisään" />
-        </>
-      )}
+      <LoggedIn navigation={navigation} onVisitedPress={() => navigation.navigate('Käydyt')}
+        onVisitPress={() => navigation.navigate('Kiinnostus')} />
+
       {/*<Text style={{ marginTop: 30 }}>vaihda tummaan tilaan</Text>
       <Switch
         trackColor={{ false: '#767577', true: '#81b0ff' }}
@@ -52,7 +44,6 @@ export default function Profile() {
   return (
     <Stack.Navigator>
       <Stack.Screen name="KäyttäjäStack" component={ProfileScreen} options={{ headerShown: false }} />
-      <Stack.Screen name="LoginStack" component={Login} options={{ headerShown: false }} />
       <Stack.Screen name="Käydyt" component={Visited} options={{ headerTitle: "Käydyt museot" }} />
       <Stack.Screen name="Kiinnostus" component={Tovisit} options={{ headerTitle: "Kiinnostuksen kohteet" }} />
     </Stack.Navigator>

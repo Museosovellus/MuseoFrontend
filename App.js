@@ -1,6 +1,4 @@
-import { StatusBar } from 'expo-status-bar';
-import { useState, useEffect, useContext } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { useState, useEffect } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Ionicons from '@expo/vector-icons/Ionicons';
@@ -10,7 +8,6 @@ import MuseoList from './src/screens/MuseoList';
 import { EventRegister } from 'react-native-event-listeners';
 import themeContext from './config/themeContext';
 import theme from './config/theme';
-import { onAuthStateChanged } from 'firebase/auth';
 import Profile from './src/screens/Profile';
 import { auth } from './src/components/firebaseConfig';
 
@@ -18,15 +15,15 @@ const Tab = createBottomTabNavigator();
 
 export default function App() {
   const [mode, setMode] = useState(false);
-  const [loggedIn, setLoggedIn] = useState(false);
+  const [user, setUser] = useState(false)
 
-  onAuthStateChanged(auth, (user) => {
-    if (user) {
-      setLoggedIn(true);
-    } else {
-      setLoggedIn(false);
-    }
-  })
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged((user) => {
+      setUser(user);
+    });
+
+    return unsubscribe;
+  }, []);
 
   useEffect(() => {
     let eventListener = EventRegister.addEventListener(
@@ -56,6 +53,9 @@ export default function App() {
               iconName = focused ? 'location' : 'location-outline';
             } else if (route.name === 'Profiili') {
               iconName = focused ? 'ios-person' : 'ios-person-outline'
+              if (!user) return null;
+            } else {
+              return null;
             }
 
             return <Ionicons name={iconName} size={size} color={color} />;
@@ -66,7 +66,7 @@ export default function App() {
           <Tab.Screen name="Etusivu" component={Home} options={{ headerShown: false }} />
           <Tab.Screen name="Museot" component={MuseoList} options={{ headerShown: true }} />
           <Tab.Screen name="Kartta" component={MuseoMap} options={{ headerShown: false }} />
-          <Tab.Screen name="Profiili" component={Profile} options={{ headerShown: false }} />
+          {user && <Tab.Screen name="Profiili" component={Profile} options={{ headerShown: false }} />}
         </Tab.Navigator>
       </NavigationContainer>
     </themeContext.Provider>
