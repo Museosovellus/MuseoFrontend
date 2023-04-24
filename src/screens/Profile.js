@@ -24,8 +24,7 @@ export function ProfileScreen({ navigation }) {
 
   return (
     <View style={styles.container}>
-      <LoggedIn navigation={navigation} onVisitedPress={() => navigation.navigate('Käydyt')}
-        onVisitPress={() => navigation.navigate('Kiinnostus')} />
+      <LoggedIn />
 
       {/*<Text style={{ marginTop: 30 }}>vaihda tummaan tilaan</Text>
       <Switch
@@ -44,8 +43,6 @@ export default function Profile() {
   return (
     <Stack.Navigator>
       <Stack.Screen name="KäyttäjäStack" component={ProfileScreen} options={{ headerShown: false }} />
-      <Stack.Screen name="Käydyt" component={Visited} options={{ headerTitle: "Käydyt museot" }} />
-      <Stack.Screen name="Kiinnostus" component={Tovisit} options={{ headerTitle: "Kiinnostuksen kohteet" }} />
     </Stack.Navigator>
   );
 };

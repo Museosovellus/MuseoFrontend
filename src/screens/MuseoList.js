@@ -3,6 +3,8 @@ import { useState, useContext, useEffect, useRef } from 'react';
 import themeContext from '../../config/themeContext';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import MuseoInfo from './MuseoInfo';
+import Visited from './Visited'
+import Tovisit from './Tovisit'
 import { Ionicons } from '@expo/vector-icons';
 import { auth } from '../components/firebaseConfig';
 import { onAuthStateChanged } from 'firebase/auth';
@@ -19,7 +21,7 @@ export function ListScreen({ navigation }) {
   const [filteredData, setFilteredData] = useState(data);
   const [user, setUser] = useState({});
 
-  const listRef = useRef(null);
+  const listRef = useRef(null)
   const [contentVerticalOffset, setContentVerticalOffset] = useState(0);
   const CONTENT_OFFSET_THRESHOLD = 300;
 
@@ -100,6 +102,16 @@ export function ListScreen({ navigation }) {
         style={styles.searchbar}
         placeholder="Hae museoa tai kaupunkia"
       />
+      {user ? (
+        <View style={styles.buttonRow}>
+          <TouchableOpacity style={styles.outlinedButton} onPress={() => navigation.navigate('Kiinnostus')}>
+            <Text style={styles.outlinedButtonText}>Kiinnostukset <Ionicons name="star-outline" size={16} /></Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.outlinedButton} onPress={() => navigation.navigate('Käydyt')}>
+            <Text style={styles.outlinedButtonText}>Käydyt museot <Ionicons name="heart-outline" size={16} /></Text>
+          </TouchableOpacity>
+        </View>
+      ) : (<></>)}
       <FlatList
         data={filteredData}
         ref={listRef}
@@ -136,12 +148,12 @@ export function ListScreen({ navigation }) {
           </TouchableOpacity>}
       />
       {contentVerticalOffset > CONTENT_OFFSET_THRESHOLD && (
-      <Ionicons 
-      name='arrow-up-circle' style={styles.scrollTopButton}
-      onPress={() => {
-        listRef.current.scrollToOffset({ offset: 0, animated: true });
-      }}
-      />
+        <Ionicons
+          name='arrow-up-circle' style={styles.scrollTopButton}
+          onPress={() => {
+            listRef.current.scrollToOffset({ offset: 0, animated: true });
+          }}
+        />
       )}
     </View>
   );
@@ -152,6 +164,8 @@ export default function MuseoList() {
     <Stack.Navigator>
       <Stack.Screen name='MuseotStack' component={ListScreen} options={{ headerShown: false }} />
       <Stack.Screen name='Museo' component={MuseoInfo} options={{ headerShown: false }} />
+      <Stack.Screen name="Käydyt" component={Visited} options={{ headerTitle: "Käydyt museot" }} />
+      <Stack.Screen name="Kiinnostus" component={Tovisit} options={{ headerTitle: "Kiinnostuksen kohteet" }} />
     </Stack.Navigator>
   );
 };

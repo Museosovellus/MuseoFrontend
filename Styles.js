@@ -40,7 +40,8 @@ export default StyleSheet.create({
         borderColor: '#c4c4c4',
         borderWidth: 1,
         margin: 20,
-        marginTop: 30,
+        marginTop: 20,
+        marginBottom: 5,
         padding: 10,
         backgroundColor: '#fafafa',
         width: '90%'
@@ -139,13 +140,13 @@ export default StyleSheet.create({
       visitedButton: {
         padding: 5,
         borderRadius: 10,
-        backgroundColor: '#eee',
+        backgroundColor: 'transparent',
         alignSelf: 'flex-end',
       },
       toVisitButton: {
         padding: 5,
         borderRadius: 10,
-        backgroundColor: '#eee',
+        backgroundColor: 'transparent',
         alignSelf: 'flex-end',
         marginLeft: 185,
       },
@@ -155,6 +156,23 @@ export default StyleSheet.create({
         centeringButton: {
         alignItems: 'center',
         justifyContent: 'center'
+      },
+      outlinedButton: {
+        borderColor: '#99a8a6',
+        paddingVertical: 10,
+        paddingHorizontal: 20,
+        borderWidth: 1,
+        borderRadius: 5,
+      },
+      buttonText: {
+        color: 'white',
+        fontSize: 16,
+        textAlign: 'center',
+      },
+      outlinedButtonText: {
+        color: '#05968f',
+        fontSize: 16,
+        textAlign: 'center',
       },
 
       /* kartta-sivun tyylit */
