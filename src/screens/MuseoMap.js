@@ -1,4 +1,3 @@
-import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { View, Button, Text } from 'react-native';
 import MapView, { Marker, Callout } from 'react-native-maps';
@@ -7,7 +6,7 @@ import styles from '../../Styles';
 
 const Stack = createNativeStackNavigator();
 
-export function MuseoMap({ navigation }) {
+function MapStack({ navigation }) {
   const data = require('../../museums.json');
 
   return (
@@ -55,10 +54,10 @@ export function MuseoMap({ navigation }) {
   );
 }
 
-export default function Main() {
+export default function MuseoMap() {
   return (
     <Stack.Navigator>
-      <Stack.Screen name='KarttaStack' component={MuseoMap} options={{ headerShown: false }} />
+      <Stack.Screen name='KarttaStack' component={MapStack} options={{ headerShown: false }} />
       <Stack.Screen name='Museo' component={MuseoInfo} options={{ headerShown: false }} />
     </Stack.Navigator>
   )

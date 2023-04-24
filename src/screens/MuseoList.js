@@ -14,7 +14,7 @@ import { faker } from '@faker-js/faker';
 
 const Stack = createNativeStackNavigator();
 
-export function ListScreen({ navigation }) {
+function ListScreen({ navigation }) {
   const theme = useContext(themeContext);
   const data = require('../../museums.json');
   const [search, setSearch] = useState('');

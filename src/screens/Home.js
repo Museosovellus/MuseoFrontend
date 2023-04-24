@@ -8,7 +8,7 @@ import Login from '../components/Login';
 
 const Stack = createStackNavigator();
 
-export function HomeScreen({ navigation }) {
+function HomeScreen({ navigation }) {
   const theme = useContext(themeContext);
   const [user, setUser] = useState(null);
 

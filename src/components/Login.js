@@ -7,7 +7,7 @@ import Signup from "./Signup";
 
 const Stack = createStackNavigator();
 
-export function LoginStack({ navigation }) {
+function LoginStack({ navigation }) {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('');
   const [error, setError] = useState(null);
@@ -63,7 +63,7 @@ export function LoginStack({ navigation }) {
 export default function Login() {
   return (
     <Stack.Navigator>
-      <Stack.Screen name="Kirjaudu" component={LoginStack} options={{headerBackTitle: 'Etusivu'}}/>
+      <Stack.Screen name="Kirjaudu" component={LoginStack} options={{ headerBackTitle: 'Etusivu' }} />
       <Stack.Screen name="Rekisteröidy" component={Signup} />
     </Stack.Navigator>
   );

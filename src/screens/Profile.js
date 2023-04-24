@@ -10,7 +10,7 @@ import styles from '../../Styles';
 
 const Stack = createStackNavigator();
 
-export function ProfileScreen({ navigation }) {
+function ProfileScreen({ navigation }) {
   //const [mode, setMode] = useState(false);
   const [user, setUser] = useState();
 
