@@ -162,10 +162,10 @@ export function ListScreen({ navigation }) {
 export default function MuseoList() {
   return (
     <Stack.Navigator>
-      <Stack.Screen name='MuseotStack' component={ListScreen} options={{ headerShown: false }} />
+      <Stack.Screen name='MuseoStack' component={ListScreen} options={{ headerShown: true, headerTitle: 'Museot' }} />
       <Stack.Screen name='Museo' component={MuseoInfo} options={{ headerShown: false }} />
-      <Stack.Screen name="Käydyt" component={Visited} options={{ headerTitle: "Käydyt museot" }} />
-      <Stack.Screen name="Kiinnostus" component={Tovisit} options={{ headerTitle: "Kiinnostuksen kohteet" }} />
+      <Stack.Screen name='Käydyt' component={Visited} options={{ headerTitle: "Käydyt museot" }} />
+      <Stack.Screen name='Kiinnostus' component={Tovisit} options={{ headerTitle: "Kiinnostuksen kohteet" }} />
     </Stack.Navigator>
   );
 };

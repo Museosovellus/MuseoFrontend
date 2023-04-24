@@ -161,6 +161,7 @@ export default StyleSheet.create({
         borderColor: '#99a8a6',
         paddingVertical: 10,
         paddingHorizontal: 20,
+        marginBottom: 5,
         borderWidth: 1,
         borderRadius: 5,
       },

@@ -43,7 +43,7 @@ export default function App() {
           tabBarIcon: ({ focused, color, size }) => {
             let iconName;
 
-            if (route.name === 'Etusivu') {
+            if (route.name === 'Kotisivu') {
               iconName = focused
                 ? 'home'
                 : 'home-outline';
@@ -63,8 +63,8 @@ export default function App() {
           tabBarActiveTintColor: '#05968f',
           tabBarInactiveTintColor: 'gray',
         })}>
-          <Tab.Screen name="Etusivu" component={Home} options={{ headerShown: false }} />
-          <Tab.Screen name="Museot" component={MuseoList} options={{ headerShown: true }} />
+          <Tab.Screen name="Kotisivu" component={Home} options={{ headerShown: false, title: 'Etusivu' }} />
+          <Tab.Screen name="Museot" component={MuseoList} options={{ headerShown: false }} />
           <Tab.Screen name="Kartta" component={MuseoMap} options={{ headerShown: false }} />
           {user && <Tab.Screen name="Profiili" component={Profile} options={{ headerShown: false }} />}
         </Tab.Navigator>
