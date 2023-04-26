@@ -1,5 +1,5 @@
 import { View, Text, Button, TextInput, StyleSheet, Alert } from "react-native";
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { createUserWithEmailAndPassword, signOut, updateProfile } from "firebase/auth";
 import React, { useState } from "react";
 import { auth } from "./firebaseConfig";
 
@@ -20,6 +20,7 @@ export default function Signup({ navigation }) {
           updateProfile(auth.currentUser, {
             displayName: username
           }).then(() => {
+            signOut(auth);
             navigation.navigate("Etusivu");
           }).catch((e) => {
             console.log(e);
