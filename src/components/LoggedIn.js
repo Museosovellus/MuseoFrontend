@@ -1,6 +1,5 @@
 import { signOut } from "firebase/auth";
 import { View, Text, Button, Image, TouchableOpacity } from "react-native";
-import styles from "../../Styles";
 import styles from "./styles";
 import { auth } from "./firebaseConfig";
 
