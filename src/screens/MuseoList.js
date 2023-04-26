@@ -1,7 +1,7 @@
 import { Text, View, FlatList, TextInput, TouchableOpacity, Alert, Image } from 'react-native';
 import { useState, useContext, useEffect, useRef } from 'react';
 import themeContext from '../../config/themeContext';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { createStackNavigator } from '@react-navigation/stack';
 import MuseoInfo from './MuseoInfo';
 import Visited from './Visited'
 import Tovisit from './Tovisit'
@@ -13,7 +13,7 @@ import styles from '../components/styles';
 import { faker } from '@faker-js/faker';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-const Stack = createNativeStackNavigator();
+const Stack = createStackNavigator();
 
 function ListScreen({ navigation }) {
   const theme = useContext(themeContext);
@@ -96,7 +96,7 @@ function ListScreen({ navigation }) {
   };
 
   return (
-    <SafeAreaView style={[styles.container, {alignItems: 'stretch', marginLeft: 5, marginRight: 5}]}>
+    <SafeAreaView style={[styles.container, { alignItems: 'stretch', marginLeft: 5, marginRight: 5 }]}>
       <TextInput
         onChangeText={searchFunction}
         value={search}
@@ -104,7 +104,7 @@ function ListScreen({ navigation }) {
         placeholder="Hae museoa tai kaupunkia"
       />
       {user ? (
-        <View style={styles.buttonRow}>
+        <View style={styles.outlinedButtonRow}>
           <TouchableOpacity style={styles.outlinedButton} onPress={() => navigation.navigate('Kiinnostus')}>
             <Text style={styles.outlinedButtonText}>Kiinnostukset <Ionicons name="star-outline" size={16} /></Text>
           </TouchableOpacity>
@@ -165,8 +165,8 @@ export default function MuseoList() {
     <Stack.Navigator>
       <Stack.Screen name='MuseoStack' component={ListScreen} options={{ headerShown: false }} />
       <Stack.Screen name='Museo' component={MuseoInfo} options={{ headerShown: false }} />
-      <Stack.Screen name='Käydyt' component={Visited} options={{ headerTitle: "Käydyt museot" }} />
-      <Stack.Screen name='Kiinnostus' component={Tovisit} options={{ headerTitle: "Kiinnostuksen kohteet" }} />
+      <Stack.Screen name='Käydyt' component={Visited} options={{ headerTitle: "Käydyt museot", headerBackTitleVisible: false}} />
+      <Stack.Screen name='Kiinnostus' component={Tovisit} options={{ headerTitle: "Kiinnostuksen kohteet", headerBackTitleVisible: false }} />
     </Stack.Navigator>
   );
 };

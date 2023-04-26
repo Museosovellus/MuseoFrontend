@@ -36,6 +36,7 @@ export default StyleSheet.create({
     fontWeight: 'bold',
   },
   searchbar: {
+    alignSelf: 'center',
     borderColor: '#c4c4c4',
     borderWidth: 1,
     margin: 20,
@@ -156,13 +157,20 @@ export default StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center'
   },
+  outlinedButtonRow: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    marginTop: 10,
+    marginLeft: 20,
+    marginRight: 20,
+  },
   outlinedButton: {
     borderColor: '#99a8a6',
     paddingVertical: 10,
     paddingHorizontal: 20,
     marginBottom: 5,
     borderWidth: 1,
-    borderRadius: 5,
+    borderRadius: 3,
   },
   buttonText: {
     color: 'white',
