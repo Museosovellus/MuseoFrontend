@@ -2,7 +2,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { View, Button, Text } from 'react-native';
 import MapView, { Marker, Callout } from 'react-native-maps';
 import MuseoInfo from './MuseoInfo';
-import styles from '../../Styles';
+import styles from '../components/styles';
 
 const Stack = createNativeStackNavigator();
 

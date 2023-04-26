@@ -1,4 +1,3 @@
-import { AuthErrorCodes } from 'firebase/auth';
 import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
@@ -175,13 +174,7 @@ export default StyleSheet.create({
     fontSize: 16,
     textAlign: 'center',
   },
-  scrollTopButton: {
-    position: 'absolute',
-    bottom: 0,
-    right: 0,
-    fontSize: 50,
-    color: '#05968f'
-  },
+
   /* kartta-sivun tyylit */
   map: {
     ...StyleSheet.absoluteFillObject,
@@ -199,32 +192,11 @@ export default StyleSheet.create({
     textAlign: 'center',
   },
 
-  userImg: {
-    height: 150,
-    width: 150,
-    borderRadius: 75,
-    marginTop: 50
-  },
-  userBtn: {
-    borderColor: '#2e64e5',
-    borderWidth: 2,
-    borderRadius: 3,
-    paddingVertical: 8,
-    paddingHorizontal: 12,
-    marginHorizontal: 5,
-  },
-  userBtnTxt: {
-    color: '#2e64e5',
-  },
-  container2: {
-    flex: 1,
-    backgroundColor: '#fff',
-    padding: 55,
-  },
-  userBtnWrapper: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-    width: '100%',
-    marginBottom: 10,
+  scrollTopButton: {
+    position: 'absolute',
+    bottom: 0,
+    right: 0,
+    fontSize: 50,
+    color: '#05968f'
   },
 });
