@@ -3,7 +3,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { Text, View, Button, } from 'react-native';
 import { auth } from '../components/firebaseConfig';
 import themeContext from '../../config/themeContext';
-import styles from '../../Styles';
+import styles from '../components/styles';
 import Login from '../components/Login';
 
 const Stack = createStackNavigator();

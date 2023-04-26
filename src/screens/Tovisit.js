@@ -6,7 +6,7 @@ import themeContext from '../../config/themeContext';
 import { Ionicons } from '@expo/vector-icons';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import MuseoInfo from './MuseoInfo';
-import styles from '../../Styles';
+import styles from '../components/styles';
 
 const Stack = createNativeStackNavigator();
 
@@ -91,4 +91,4 @@ export default function MuseoList() {
       <Stack.Screen name="Museo" component={MuseoInfo} options={{ headerShown: false }} />
     </Stack.Navigator>
   );
-  };
+};

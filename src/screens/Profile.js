@@ -6,7 +6,7 @@ import Tovisit from './Tovisit';
 import { createStackNavigator } from '@react-navigation/stack';
 import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from "../components/firebaseConfig";
-import styles from '../../Styles';
+import styles from '../components/styles';
 
 const Stack = createStackNavigator();
 

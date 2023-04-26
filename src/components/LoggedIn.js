@@ -1,6 +1,6 @@
 import { signOut } from "firebase/auth";
 import { View, Text, Button } from "react-native";
-import styles from "../../Styles";
+import styles from "./styles";
 import { auth } from "./firebaseConfig";
 
 export default function LoggedIn() {

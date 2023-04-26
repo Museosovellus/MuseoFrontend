@@ -9,8 +9,9 @@ import { Ionicons } from '@expo/vector-icons';
 import { auth } from '../components/firebaseConfig';
 import { onAuthStateChanged } from 'firebase/auth';
 import { getDatabase, ref, push, query, orderByChild, equalTo, get } from '@firebase/database';
-import styles from '../../Styles';
+import styles from '../components/styles';
 import { faker } from '@faker-js/faker';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 const Stack = createNativeStackNavigator();
 
@@ -95,7 +96,7 @@ function ListScreen({ navigation }) {
   };
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <TextInput
         onChangeText={searchFunction}
         value={search}
@@ -155,14 +156,14 @@ function ListScreen({ navigation }) {
           }}
         />
       )}
-    </View>
+    </SafeAreaView>
   );
 }
 
 export default function MuseoList() {
   return (
     <Stack.Navigator>
-      <Stack.Screen name='MuseoStack' component={ListScreen} options={{ headerShown: true, headerTitle: 'Museot' }} />
+      <Stack.Screen name='MuseoStack' component={ListScreen} options={{ headerShown: false }} />
       <Stack.Screen name='Museo' component={MuseoInfo} options={{ headerShown: false }} />
       <Stack.Screen name='Käydyt' component={Visited} options={{ headerTitle: "Käydyt museot" }} />
       <Stack.Screen name='Kiinnostus' component={Tovisit} options={{ headerTitle: "Kiinnostuksen kohteet" }} />
