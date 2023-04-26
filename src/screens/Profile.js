@@ -23,7 +23,7 @@ function ProfileScreen({ navigation }) {
   }, []);
 
   return (
-    <View style={styles.container}>
+    <View style={styles.container2}>
       <LoggedIn />
 
       {/*<Text style={{ marginTop: 30 }}>vaihda tummaan tilaan</Text>

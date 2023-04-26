@@ -95,7 +95,7 @@ function ListScreen({ navigation }) {
   };
 
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, {alignItems: 'stretch', marginLeft: 5, marginRight: 5}]}>
       <TextInput
         onChangeText={searchFunction}
         value={search}

@@ -1,5 +1,5 @@
 import { signOut } from "firebase/auth";
-import { View, Text, Button } from "react-native";
+import { View, Text, Button, Image, ScrollView, TouchableOpacity } from "react-native";
 import styles from "../../Styles";
 import { auth } from "./firebaseConfig";
 
@@ -15,17 +15,25 @@ export default function LoggedIn() {
   const user = auth.currentUser;
 
   return (
-    <View>
+    <View
+      style={styles.container2}
+      contentContainerStyle={{ justifyContent: 'center', alignItems: 'center' }}>
       {user ? (
         <>
-          <Text style={styles.profileName}>Hei {user.displayName}!</Text>
-
-          <Text>{user.email}</Text>
+          <Image
+            style={styles.userImg}
+            source={{ uri: 'https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png' }}
+          />
+          <Text style={styles.profileName}>{user.displayName}</Text>
+          <View style={styles.userBtnWrapper}>
+          <TouchableOpacity style={styles.userBtn} onPress={() => logout()}>
+            <Text style={styles.userBtnTxt}>Logout</Text>
+          </TouchableOpacity>
+          </View>
         </>
       ) : (
         <Text></Text>
       )}
-      <Button title="Log out" onPress={logout} />
     </View>
   );
 }
