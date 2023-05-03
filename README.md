@@ -1,6 +1,5 @@
 <!-- Logo -->
 <div align="center">
-  <p style="color: #05968f; font-size: 180px; margin-bottom: -20px; font-weight: 600;">M</p>
   <h1 align="center">Museosovellus</h1>
 </div>
 
