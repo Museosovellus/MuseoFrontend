@@ -26,9 +26,9 @@ export default function LoggedIn() {
           />
           <Text style={styles.profileName}>{user.displayName}</Text>
           <View style={styles.userBtnWrapper}>
-          <TouchableOpacity style={styles.userBtn} onPress={() => logout()}>
-            <Text style={styles.userBtnTxt}>Logout</Text>
-          </TouchableOpacity>
+            <TouchableOpacity style={styles.userBtn} onPress={() => logout()}>
+              <Text style={styles.userBtnTxt}>Logout</Text>
+            </TouchableOpacity>
           </View>
         </>
       ) : (

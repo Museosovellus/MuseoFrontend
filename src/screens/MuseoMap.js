@@ -39,7 +39,8 @@ function MapStack({ navigation }) {
                 province: marker.province,
                 latitude: Number(marker.latitude),
                 longitude: Number(marker.longitude),
-                openingHours: marker.openingHours
+                openingHours: marker.openingHours,
+                url: marker.url
               })
             }}>
               <View>

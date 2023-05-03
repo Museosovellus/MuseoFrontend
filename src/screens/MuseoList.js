@@ -165,7 +165,7 @@ export default function MuseoList() {
     <Stack.Navigator>
       <Stack.Screen name='MuseoStack' component={ListScreen} options={{ headerShown: false }} />
       <Stack.Screen name='Museo' component={MuseoInfo} options={{ headerShown: false }} />
-      <Stack.Screen name='Käydyt' component={Visited} options={{ headerTitle: "Käydyt museot", headerBackTitleVisible: false}} />
+      <Stack.Screen name='Käydyt' component={Visited} options={{ headerTitle: "Käydyt museot", headerBackTitleVisible: false }} />
       <Stack.Screen name='Kiinnostus' component={Tovisit} options={{ headerTitle: "Kiinnostuksen kohteet", headerBackTitleVisible: false }} />
     </Stack.Navigator>
   );
