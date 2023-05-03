@@ -1,29 +1,35 @@
 import { Text, View, FlatList, TextInput, TouchableOpacity, Alert, Image } from 'react-native';
-import { useState, useContext, useEffect } from 'react';
+import { useState, useContext, useEffect, useRef } from 'react';
 import themeContext from '../../config/themeContext';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { createStackNavigator } from '@react-navigation/stack';
 import MuseoInfo from './MuseoInfo';
+import Visited from './Visited'
+import Tovisit from './Tovisit'
 import { Ionicons } from '@expo/vector-icons';
 import { auth } from '../components/firebaseConfig';
 import { onAuthStateChanged } from 'firebase/auth';
 import { getDatabase, ref, push, query, orderByChild, equalTo, get } from '@firebase/database';
-import styles from '../../Styles';
+import styles from '../components/styles';
+import { faker } from '@faker-js/faker';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
-const Stack = createNativeStackNavigator();
+const Stack = createStackNavigator();
 
-export function ListScreen({ navigation }) {
+function ListScreen({ navigation }) {
   const theme = useContext(themeContext);
   const data = require('../../museums.json');
   const [search, setSearch] = useState('');
   const [filteredData, setFilteredData] = useState(data);
-  const [loggedIn, setLoggedIn] = useState(false);
   const [user, setUser] = useState({});
+
+  const listRef = useRef(null)
+  const [contentVerticalOffset, setContentVerticalOffset] = useState(0);
+  const CONTENT_OFFSET_THRESHOLD = 300;
 
   useEffect(() => {
     const subscriber = onAuthStateChanged(auth, (user) => {
       console.log('user', JSON.stringify(user));
       setUser(user);
-      if (user) { setLoggedIn(true) } else { setLoggedIn(false) }
     });
     return subscriber;
   }, []);
@@ -90,15 +96,29 @@ export function ListScreen({ navigation }) {
   };
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={[styles.container, { alignItems: 'stretch', marginLeft: 5, marginRight: 5 }]}>
       <TextInput
         onChangeText={searchFunction}
         value={search}
         style={styles.searchbar}
         placeholder="Hae museoa tai kaupunkia"
       />
+      {user ? (
+        <View style={styles.outlinedButtonRow}>
+          <TouchableOpacity style={styles.outlinedButton} onPress={() => navigation.navigate('Kiinnostus')}>
+            <Text style={styles.outlinedButtonText}>Kiinnostukset <Ionicons name="star-outline" size={16} /></Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.outlinedButton} onPress={() => navigation.navigate('Käydyt')}>
+            <Text style={styles.outlinedButtonText}>Käydyt museot <Ionicons name="heart-outline" size={16} /></Text>
+          </TouchableOpacity>
+        </View>
+      ) : (<></>)}
       <FlatList
         data={filteredData}
+        ref={listRef}
+        onScroll={event => {
+          setContentVerticalOffset(event.nativeEvent.contentOffset.y);
+        }}
         renderItem={({ item }) =>
           <TouchableOpacity
             style={styles.box}
@@ -113,10 +133,10 @@ export function ListScreen({ navigation }) {
                 openingHours: item.openingHours,
                 url: item.url
               })}>
-            <Image source={require('../../pic.jpg')} style={styles.listImage} />
+            <Image source={{ uri: faker.image.city(640, 400, false) }} style={styles.listImage} />
             <Text style={styles.item}>{item.name}</Text>
             <Text style={styles.city}><Ionicons name="location-sharp" /> {item.city}</Text>
-            {loggedIn ? (
+            {user ? (
               <View style={styles.buttonRow}>
                 <TouchableOpacity style={styles.toVisitButton} onPress={() => handleToVisitButtonPress(item)}>
                   <Ionicons name="star-outline" size={24} color="#333" />
@@ -128,15 +148,25 @@ export function ListScreen({ navigation }) {
             ) : (<></>)}
           </TouchableOpacity>}
       />
-    </View>
+      {contentVerticalOffset > CONTENT_OFFSET_THRESHOLD && (
+        <Ionicons
+          name='arrow-up-circle' style={styles.scrollTopButton}
+          onPress={() => {
+            listRef.current.scrollToOffset({ offset: 0, animated: true });
+          }}
+        />
+      )}
+    </SafeAreaView>
   );
 }
 
 export default function MuseoList() {
   return (
     <Stack.Navigator>
-      <Stack.Screen name='MuseotStack' component={ListScreen} options={{ headerShown: false }} />
+      <Stack.Screen name='MuseoStack' component={ListScreen} options={{ headerShown: false }} />
       <Stack.Screen name='Museo' component={MuseoInfo} options={{ headerShown: false }} />
+      <Stack.Screen name='Käydyt' component={Visited} options={{ headerTitle: "Käydyt museot", headerBackTitleVisible: false }} />
+      <Stack.Screen name='Kiinnostus' component={Tovisit} options={{ headerTitle: "Kiinnostuksen kohteet", headerBackTitleVisible: false }} />
     </Stack.Navigator>
   );
 };

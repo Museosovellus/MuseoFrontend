@@ -1,9 +1,9 @@
 import { signOut } from "firebase/auth";
-import { View, Text, Button } from "react-native";
-import styles from "../../Styles";
+import { View, Text, Button, Image, TouchableOpacity } from "react-native";
+import styles from "./styles";
 import { auth } from "./firebaseConfig";
 
-export default function LoggedIn({ onVisitedPress, onVisitPress }) {
+export default function LoggedIn() {
 
   const logout = async () => {
     try {
@@ -15,19 +15,25 @@ export default function LoggedIn({ onVisitedPress, onVisitPress }) {
   const user = auth.currentUser;
 
   return (
-    <View>
+    <View
+      style={styles.container2}
+      contentContainerStyle={{ justifyContent: 'center', alignItems: 'center' }}>
       {user ? (
         <>
-          <Text style={styles.profileName}>Hei {user.displayName}!</Text>
-
-          <Text>{user.email}</Text>
+          <Image
+            style={styles.userImg}
+            source={{ uri: 'https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png' }}
+          />
+          <Text style={styles.profileName}>{user.displayName}</Text>
+          <View style={styles.userBtnWrapper}>
+            <TouchableOpacity style={styles.userBtn} onPress={() => logout()}>
+              <Text style={styles.userBtnTxt}>Kirjaudu ulos</Text>
+            </TouchableOpacity>
+          </View>
         </>
       ) : (
         <Text></Text>
       )}
-      <Button title="Käydyt museot" onPress={onVisitedPress} />
-      <Button title="Haluan käydä" onPress={onVisitPress} />
-      <Button title="Log out" onPress={logout} />
     </View>
   );
 }

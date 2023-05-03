@@ -6,7 +6,7 @@ import themeContext from '../../config/themeContext';
 import { Ionicons } from '@expo/vector-icons';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import MuseoInfo from './MuseoInfo';
-import styles from '../../Styles';
+import styles from '../components/styles';
 
 const Stack = createNativeStackNavigator();
 
@@ -51,6 +51,7 @@ function Visited({ navigation }) {
           latitude: item.latitude,
           longitude: item.longitude,
           openingHours: item.openingHours,
+          url: item.url
         })
       }>
       <Text style={styles.item}>{item.name}</Text>

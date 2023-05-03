@@ -7,7 +7,7 @@ import Signup from "./Signup";
 
 const Stack = createStackNavigator();
 
-export function LoginStack({ navigation }) {
+function LoginStack({ navigation }) {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('');
   const [error, setError] = useState(null);
@@ -16,7 +16,7 @@ export function LoginStack({ navigation }) {
     try {
       let res = await signInWithEmailAndPassword(auth, email, password);
       if (res && res.user) { Alert.alert("Sisäänkirjautuminen onnistui") }
-      navigation.navigate("KäyttäjäStack");
+      navigation.navigate("Etusivu");
     } catch (error) {
       if (error.code === 'auth/invalid-email' || error.code === 'auth/wrong-password') {
         setError('Virheellinen sähköposti tai salasana');
@@ -63,7 +63,7 @@ export function LoginStack({ navigation }) {
 export default function Login() {
   return (
     <Stack.Navigator>
-      <Stack.Screen name="Kirjaudu" component={LoginStack} />
+      <Stack.Screen name="Kirjaudu" component={LoginStack} options={{ headerLeft: null }} />
       <Stack.Screen name="Rekisteröidy" component={Signup} />
     </Stack.Navigator>
   );
