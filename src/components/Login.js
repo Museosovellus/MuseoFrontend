@@ -63,7 +63,7 @@ function LoginStack({ navigation }) {
 export default function Login() {
   return (
     <Stack.Navigator>
-      <Stack.Screen name="Kirjaudu" component={LoginStack} options={{ headerBackTitle: 'Etusivu' }} />
+      <Stack.Screen name="Kirjaudu" component={LoginStack} options={{ headerLeft: null }} />
       <Stack.Screen name="Rekisteröidy" component={Signup} />
     </Stack.Navigator>
   );

@@ -51,6 +51,7 @@ function Visited({ navigation }) {
           latitude: item.latitude,
           longitude: item.longitude,
           openingHours: item.openingHours,
+          url: item.url
         })
       }>
       <Text style={styles.item}>{item.name}</Text>

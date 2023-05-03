@@ -8,7 +8,7 @@ import { Ionicons } from '@expo/vector-icons';
 import styles from '../components/styles';
 import * as Linking from 'expo-linking';
 
-export default function MuseoInfo({ route, navigation }) {
+export default function MuseoInfo({ route }) {
 
   const theme = useContext(themeContext);
   const { name, city, province, latitude, longitude, openingHours, url, index } = route.params;
