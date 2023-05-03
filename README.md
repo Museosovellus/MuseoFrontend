@@ -59,12 +59,12 @@ Museotilasto, Museovirasto. [CC BY 4.0][CC-BY-4.0-url].
 5. Skannaa terminaaliin tuleva QR-koodi kamerasovelluksella (iOS) tai Expo-sovelluksella (Android)
 
 ## Käyttöliittymä
-<img src="./assets/img/etusivu.png" width="49%" height="49%" />
-<img src="./assets/img/lista.png" width="49%" height="49%" />
-<img src="./assets/img/museo.png" width="49%" height="49%" />
-<img src="./assets/img/kartta.png" width="49%" height="49%" />
-<img src="./assets/img/kirjaudu.png" width="49%" height="49%" />
-<img src="./assets/img/kaydyt.png" width="49%" height="49%" />
+<img src="./assets/img/etusivu.PNG" width="49%" height="49%" />
+<img src="./assets/img/lista.PNG" width="49%" height="49%" />
+<img src="./assets/img/museo.PNG" width="49%" height="49%" />
+<img src="./assets/img/kartta.PNG" width="49%" height="49%" />
+<img src="./assets/img/kirjaudu.PNG" width="49%" height="49%" />
+<img src="./assets/img/kaydyt.PNG" width="49%" height="49%" />
 
 ## Tekijät
 * [Karri Helokumpu](https://github.com/Karri966)
